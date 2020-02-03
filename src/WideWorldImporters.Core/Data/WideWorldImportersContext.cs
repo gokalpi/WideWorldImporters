@@ -1,7 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using WideWorldImporters.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using WideWorldImporters.Core.Entities.Application;
+using WideWorldImporters.Core.Entities.Puchasing;
+using WideWorldImporters.Core.Entities.Sales;
+using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Data
 {
@@ -24,7 +25,6 @@ namespace WideWorldImporters.Core.Data
         public virtual DbSet<CustomerCategories> CustomerCategories { get; set; }
         public virtual DbSet<CustomerTransactions> CustomerTransactions { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<Customers1> Customers1 { get; set; }
         public virtual DbSet<DeliveryMethods> DeliveryMethods { get; set; }
         public virtual DbSet<InvoiceLines> InvoiceLines { get; set; }
         public virtual DbSet<Invoices> Invoices { get; set; }
@@ -45,11 +45,9 @@ namespace WideWorldImporters.Core.Data
         public virtual DbSet<SupplierCategories> SupplierCategories { get; set; }
         public virtual DbSet<SupplierTransactions> SupplierTransactions { get; set; }
         public virtual DbSet<Suppliers> Suppliers { get; set; }
-        public virtual DbSet<Suppliers1> Suppliers1 { get; set; }
         public virtual DbSet<SystemParameters> SystemParameters { get; set; }
         public virtual DbSet<TransactionTypes> TransactionTypes { get; set; }
         public virtual DbSet<VehicleTemperatures> VehicleTemperatures { get; set; }
-        public virtual DbSet<VehicleTemperatures1> VehicleTemperatures1 { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -470,48 +468,6 @@ namespace WideWorldImporters.Core.Data
                     .HasForeignKey(d => d.PrimaryContactPersonId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Sales_Customers_PrimaryContactPersonID_Application_People");
-            });
-
-            modelBuilder.Entity<Customers1>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToView("Customers", "Website");
-
-                entity.Property(e => e.AlternateContact).HasMaxLength(50);
-
-                entity.Property(e => e.BuyingGroupName).HasMaxLength(50);
-
-                entity.Property(e => e.CityName).HasMaxLength(50);
-
-                entity.Property(e => e.CustomerCategoryName).HasMaxLength(50);
-
-                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
-
-                entity.Property(e => e.CustomerName)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.DeliveryMethod).HasMaxLength(50);
-
-                entity.Property(e => e.DeliveryRun).HasMaxLength(5);
-
-                entity.Property(e => e.FaxNumber)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.PhoneNumber)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.PrimaryContact).HasMaxLength(50);
-
-                entity.Property(e => e.RunPosition).HasMaxLength(5);
-
-                entity.Property(e => e.WebsiteUrl)
-                    .IsRequired()
-                    .HasColumnName("WebsiteURL")
-                    .HasMaxLength(256);
             });
 
             modelBuilder.Entity<DeliveryMethods>(entity =>
@@ -1752,44 +1708,6 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Purchasing_Suppliers_SupplierCategoryID_Purchasing_SupplierCategories");
             });
 
-            modelBuilder.Entity<Suppliers1>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToView("Suppliers", "Website");
-
-                entity.Property(e => e.AlternateContact).HasMaxLength(50);
-
-                entity.Property(e => e.CityName).HasMaxLength(50);
-
-                entity.Property(e => e.DeliveryMethod).HasMaxLength(50);
-
-                entity.Property(e => e.FaxNumber)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.PhoneNumber)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.PrimaryContact).HasMaxLength(50);
-
-                entity.Property(e => e.SupplierCategoryName).HasMaxLength(50);
-
-                entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
-
-                entity.Property(e => e.SupplierName)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                entity.Property(e => e.SupplierReference).HasMaxLength(20);
-
-                entity.Property(e => e.WebsiteUrl)
-                    .IsRequired()
-                    .HasColumnName("WebsiteURL")
-                    .HasMaxLength(256);
-            });
-
             modelBuilder.Entity<SystemParameters>(entity =>
             {
                 entity.HasKey(e => e.SystemParameterId)
@@ -1896,25 +1814,6 @@ namespace WideWorldImporters.Core.Data
                 entity.Property(e => e.VehicleRegistration)
                     .IsRequired()
                     .HasMaxLength(20);
-            });
-
-            modelBuilder.Entity<VehicleTemperatures1>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.ToView("VehicleTemperatures", "Website");
-
-                entity.Property(e => e.FullSensorData).HasMaxLength(1000);
-
-                entity.Property(e => e.Temperature).HasColumnType("decimal(10, 2)");
-
-                entity.Property(e => e.VehicleRegistration)
-                    .IsRequired()
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.VehicleTemperatureId)
-                    .HasColumnName("VehicleTemperatureID")
-                    .ValueGeneratedOnAdd();
             });
 
             modelBuilder.HasSequence<int>("BuyingGroupID", "Sequences").StartsAt(3);
