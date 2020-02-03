@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Spatial;
 
 namespace WideWorldImporters.Core.Entities
 {
@@ -15,6 +16,7 @@ namespace WideWorldImporters.Core.Entities
         public string StateProvinceName { get; set; }
         public int CountryId { get; set; }
         public string SalesTerritory { get; set; }
+        public DbGeography Border { get; set; }
         public long? LatestRecordedPopulation { get; set; }
         public int LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }
