@@ -3,7 +3,7 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class SupplierTransactions
+    public partial class SupplierTransaction
     {
         public int SupplierTransactionId { get; set; }
         public int SupplierId { get; set; }
@@ -21,10 +21,10 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual PaymentMethods PaymentMethod { get; set; }
-        public virtual PurchaseOrders PurchaseOrder { get; set; }
-        public virtual Suppliers Supplier { get; set; }
-        public virtual TransactionTypes TransactionType { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual PaymentMethod PaymentMethod { get; set; }
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual TransactionType TransactionType { get; set; }
     }
 }

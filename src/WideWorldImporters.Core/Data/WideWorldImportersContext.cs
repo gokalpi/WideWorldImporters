@@ -17,36 +17,36 @@ namespace WideWorldImporters.Core.Data
         {
         }
 
-        public virtual DbSet<BuyingGroups> BuyingGroups { get; set; }
-        public virtual DbSet<Cities> Cities { get; set; }
-        public virtual DbSet<ColdRoomTemperatures> ColdRoomTemperatures { get; set; }
-        public virtual DbSet<Colors> Colors { get; set; }
-        public virtual DbSet<Countries> Countries { get; set; }
-        public virtual DbSet<CustomerCategories> CustomerCategories { get; set; }
-        public virtual DbSet<CustomerTransactions> CustomerTransactions { get; set; }
-        public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<DeliveryMethods> DeliveryMethods { get; set; }
-        public virtual DbSet<InvoiceLines> InvoiceLines { get; set; }
-        public virtual DbSet<Invoices> Invoices { get; set; }
-        public virtual DbSet<OrderLines> OrderLines { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<PackageTypes> PackageTypes { get; set; }
-        public virtual DbSet<PaymentMethods> PaymentMethods { get; set; }
-        public virtual DbSet<People> People { get; set; }
-        public virtual DbSet<PurchaseOrderLines> PurchaseOrderLines { get; set; }
-        public virtual DbSet<PurchaseOrders> PurchaseOrders { get; set; }
-        public virtual DbSet<SpecialDeals> SpecialDeals { get; set; }
-        public virtual DbSet<StateProvinces> StateProvinces { get; set; }
-        public virtual DbSet<StockGroups> StockGroups { get; set; }
-        public virtual DbSet<StockItemHoldings> StockItemHoldings { get; set; }
-        public virtual DbSet<StockItemStockGroups> StockItemStockGroups { get; set; }
-        public virtual DbSet<StockItemTransactions> StockItemTransactions { get; set; }
-        public virtual DbSet<StockItems> StockItems { get; set; }
-        public virtual DbSet<SupplierCategories> SupplierCategories { get; set; }
-        public virtual DbSet<SupplierTransactions> SupplierTransactions { get; set; }
-        public virtual DbSet<Suppliers> Suppliers { get; set; }
-        public virtual DbSet<SystemParameters> SystemParameters { get; set; }
-        public virtual DbSet<TransactionTypes> TransactionTypes { get; set; }
+        public virtual DbSet<BuyingGroup> BuyingGroups { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<ColdRoomTemperature> ColdRoomTemperatures { get; set; }
+        public virtual DbSet<Color> Colors { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<CustomerCategory> CustomerCategories { get; set; }
+        public virtual DbSet<CustomerTransaction> CustomerTransactions { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+        public virtual DbSet<InvoiceLine> InvoiceLines { get; set; }
+        public virtual DbSet<Invoice> Invoices { get; set; }
+        public virtual DbSet<OrderLine> OrderLines { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<PackageType> PackageTypes { get; set; }
+        public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<PurchaseOrderLine> PurchaseOrderLines { get; set; }
+        public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public virtual DbSet<SpecialDeal> SpecialDeals { get; set; }
+        public virtual DbSet<StateProvince> StateProvinces { get; set; }
+        public virtual DbSet<StockGroup> StockGroups { get; set; }
+        public virtual DbSet<StockItemHolding> StockItemHoldings { get; set; }
+        public virtual DbSet<StockItemStockGroup> StockItemStockGroups { get; set; }
+        public virtual DbSet<StockItemTransaction> StockItemTransactions { get; set; }
+        public virtual DbSet<StockItem> StockItems { get; set; }
+        public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
+        public virtual DbSet<SupplierTransaction> SupplierTransactions { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<SystemParameter> SystemParameters { get; set; }
+        public virtual DbSet<TransactionType> TransactionTypes { get; set; }
         public virtual DbSet<VehicleTemperatures> VehicleTemperatures { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -60,7 +60,7 @@ namespace WideWorldImporters.Core.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BuyingGroups>(entity =>
+            modelBuilder.Entity<BuyingGroup>(entity =>
             {
                 entity.HasKey(e => e.BuyingGroupId)
                     .HasName("PK_Sales_BuyingGroups");
@@ -86,7 +86,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_BuyingGroups_Application_People");
             });
 
-            modelBuilder.Entity<Cities>(entity =>
+            modelBuilder.Entity<City>(entity =>
             {
                 entity.HasKey(e => e.CityId)
                     .HasName("PK_Application_Cities");
@@ -119,7 +119,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Application_Cities_StateProvinceID_Application_StateProvinces");
             });
 
-            modelBuilder.Entity<ColdRoomTemperatures>(entity =>
+            modelBuilder.Entity<ColdRoomTemperature>(entity =>
             {
                 entity.HasKey(e => e.ColdRoomTemperatureId)
                     .HasName("PK_Warehouse_ColdRoomTemperatures");
@@ -134,7 +134,7 @@ namespace WideWorldImporters.Core.Data
                 entity.Property(e => e.Temperature).HasColumnType("decimal(10, 2)");
             });
 
-            modelBuilder.Entity<Colors>(entity =>
+            modelBuilder.Entity<Color>(entity =>
             {
                 entity.HasKey(e => e.ColorId)
                     .HasName("PK_Warehouse_Colors");
@@ -160,7 +160,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Warehouse_Colors_Application_People");
             });
 
-            modelBuilder.Entity<Countries>(entity =>
+            modelBuilder.Entity<Country>(entity =>
             {
                 entity.HasKey(e => e.CountryId)
                     .HasName("PK_Application_Countries");
@@ -210,7 +210,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Application_Countries_Application_People");
             });
 
-            modelBuilder.Entity<CustomerCategories>(entity =>
+            modelBuilder.Entity<CustomerCategory>(entity =>
             {
                 entity.HasKey(e => e.CustomerCategoryId)
                     .HasName("PK_Sales_CustomerCategories");
@@ -236,7 +236,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_CustomerCategories_Application_People");
             });
 
-            modelBuilder.Entity<CustomerTransactions>(entity =>
+            modelBuilder.Entity<CustomerTransaction>(entity =>
             {
                 entity.HasKey(e => e.CustomerTransactionId)
                     .HasName("PK_Sales_CustomerTransactions");
@@ -315,7 +315,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_CustomerTransactions_TransactionTypeID_Application_TransactionTypes");
             });
 
-            modelBuilder.Entity<Customers>(entity =>
+            modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasKey(e => e.CustomerId)
                     .HasName("PK_Sales_Customers");
@@ -470,7 +470,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_Customers_PrimaryContactPersonID_Application_People");
             });
 
-            modelBuilder.Entity<DeliveryMethods>(entity =>
+            modelBuilder.Entity<DeliveryMethod>(entity =>
             {
                 entity.HasKey(e => e.DeliveryMethodId)
                     .HasName("PK_Application_DeliveryMethods");
@@ -496,7 +496,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Application_DeliveryMethods_Application_People");
             });
 
-            modelBuilder.Entity<InvoiceLines>(entity =>
+            modelBuilder.Entity<InvoiceLine>(entity =>
             {
                 entity.HasKey(e => e.InvoiceLineId)
                     .HasName("PK_Sales_InvoiceLines");
@@ -563,7 +563,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_InvoiceLines_StockItemID_Warehouse_StockItems");
             });
 
-            modelBuilder.Entity<Invoices>(entity =>
+            modelBuilder.Entity<Invoice>(entity =>
             {
                 entity.HasKey(e => e.InvoiceId)
                     .HasName("PK_Sales_Invoices");
@@ -687,7 +687,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_Invoices_SalespersonPersonID_Application_People");
             });
 
-            modelBuilder.Entity<OrderLines>(entity =>
+            modelBuilder.Entity<OrderLine>(entity =>
             {
                 entity.HasKey(e => e.OrderLineId)
                     .HasName("PK_Sales_OrderLines");
@@ -754,7 +754,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_OrderLines_StockItemID_Warehouse_StockItems");
             });
 
-            modelBuilder.Entity<Orders>(entity =>
+            modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
                     .HasName("PK_Sales_Orders");
@@ -830,7 +830,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_Orders_SalespersonPersonID_Application_People");
             });
 
-            modelBuilder.Entity<PackageTypes>(entity =>
+            modelBuilder.Entity<PackageType>(entity =>
             {
                 entity.HasKey(e => e.PackageTypeId)
                     .HasName("PK_Warehouse_PackageTypes");
@@ -856,7 +856,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Warehouse_PackageTypes_Application_People");
             });
 
-            modelBuilder.Entity<PaymentMethods>(entity =>
+            modelBuilder.Entity<PaymentMethod>(entity =>
             {
                 entity.HasKey(e => e.PaymentMethodId)
                     .HasName("PK_Application_PaymentMethods");
@@ -882,7 +882,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Application_PaymentMethods_Application_People");
             });
 
-            modelBuilder.Entity<People>(entity =>
+            modelBuilder.Entity<Person>(entity =>
             {
                 entity.HasKey(e => e.PersonId)
                     .HasName("PK_Application_People");
@@ -935,7 +935,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Application_People_Application_People");
             });
 
-            modelBuilder.Entity<PurchaseOrderLines>(entity =>
+            modelBuilder.Entity<PurchaseOrderLine>(entity =>
             {
                 entity.HasKey(e => e.PurchaseOrderLineId)
                     .HasName("PK_Purchasing_PurchaseOrderLines");
@@ -999,7 +999,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Purchasing_PurchaseOrderLines_StockItemID_Warehouse_StockItems");
             });
 
-            modelBuilder.Entity<PurchaseOrders>(entity =>
+            modelBuilder.Entity<PurchaseOrder>(entity =>
             {
                 entity.HasKey(e => e.PurchaseOrderId)
                     .HasName("PK_Purchasing_PurchaseOrders");
@@ -1058,7 +1058,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Purchasing_PurchaseOrders_SupplierID_Purchasing_Suppliers");
             });
 
-            modelBuilder.Entity<SpecialDeals>(entity =>
+            modelBuilder.Entity<SpecialDeal>(entity =>
             {
                 entity.HasKey(e => e.SpecialDealId)
                     .HasName("PK_Sales_SpecialDeals");
@@ -1142,7 +1142,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Sales_SpecialDeals_StockItemID_Warehouse_StockItems");
             });
 
-            modelBuilder.Entity<StateProvinces>(entity =>
+            modelBuilder.Entity<StateProvince>(entity =>
             {
                 entity.HasKey(e => e.StateProvinceId)
                     .HasName("PK_Application_StateProvinces");
@@ -1190,7 +1190,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Application_StateProvinces_Application_People");
             });
 
-            modelBuilder.Entity<StockGroups>(entity =>
+            modelBuilder.Entity<StockGroup>(entity =>
             {
                 entity.HasKey(e => e.StockGroupId)
                     .HasName("PK_Warehouse_StockGroups");
@@ -1216,7 +1216,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Warehouse_StockGroups_Application_People");
             });
 
-            modelBuilder.Entity<StockItemHoldings>(entity =>
+            modelBuilder.Entity<StockItemHolding>(entity =>
             {
                 entity.HasKey(e => e.StockItemId)
                     .HasName("PK_Warehouse_StockItemHoldings");
@@ -1243,12 +1243,12 @@ namespace WideWorldImporters.Core.Data
 
                 entity.HasOne(d => d.StockItem)
                     .WithOne(p => p.StockItemHoldings)
-                    .HasForeignKey<StockItemHoldings>(d => d.StockItemId)
+                    .HasForeignKey<StockItemHolding>(d => d.StockItemId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("PKFK_Warehouse_StockItemHoldings_StockItemID_Warehouse_StockItems");
             });
 
-            modelBuilder.Entity<StockItemStockGroups>(entity =>
+            modelBuilder.Entity<StockItemStockGroup>(entity =>
             {
                 entity.HasKey(e => e.StockItemStockGroupId)
                     .HasName("PK_Warehouse_StockItemStockGroups");
@@ -1292,7 +1292,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Warehouse_StockItemStockGroups_StockItemID_Warehouse_StockItems");
             });
 
-            modelBuilder.Entity<StockItemTransactions>(entity =>
+            modelBuilder.Entity<StockItemTransaction>(entity =>
             {
                 entity.HasKey(e => e.StockItemTransactionId)
                     .HasName("PK_Warehouse_StockItemTransactions");
@@ -1376,7 +1376,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Warehouse_StockItemTransactions_TransactionTypeID_Application_TransactionTypes");
             });
 
-            modelBuilder.Entity<StockItems>(entity =>
+            modelBuilder.Entity<StockItem>(entity =>
             {
                 entity.HasKey(e => e.StockItemId)
                     .HasName("PK_Warehouse_StockItems");
@@ -1465,7 +1465,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Warehouse_StockItems_UnitPackageID_Warehouse_PackageTypes");
             });
 
-            modelBuilder.Entity<SupplierCategories>(entity =>
+            modelBuilder.Entity<SupplierCategory>(entity =>
             {
                 entity.HasKey(e => e.SupplierCategoryId)
                     .HasName("PK_Purchasing_SupplierCategories");
@@ -1491,7 +1491,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Purchasing_SupplierCategories_Application_People");
             });
 
-            modelBuilder.Entity<SupplierTransactions>(entity =>
+            modelBuilder.Entity<SupplierTransaction>(entity =>
             {
                 entity.HasKey(e => e.SupplierTransactionId)
                     .HasName("PK_Purchasing_SupplierTransactions");
@@ -1572,7 +1572,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Purchasing_SupplierTransactions_TransactionTypeID_Application_TransactionTypes");
             });
 
-            modelBuilder.Entity<Suppliers>(entity =>
+            modelBuilder.Entity<Supplier>(entity =>
             {
                 entity.HasKey(e => e.SupplierId)
                     .HasName("PK_Purchasing_Suppliers");
@@ -1708,7 +1708,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Purchasing_Suppliers_SupplierCategoryID_Purchasing_SupplierCategories");
             });
 
-            modelBuilder.Entity<SystemParameters>(entity =>
+            modelBuilder.Entity<SystemParameter>(entity =>
             {
                 entity.HasKey(e => e.SystemParameterId)
                     .HasName("PK_Application_SystemParameters");
@@ -1772,7 +1772,7 @@ namespace WideWorldImporters.Core.Data
                     .HasConstraintName("FK_Application_SystemParameters_PostalCityID_Application_Cities");
             });
 
-            modelBuilder.Entity<TransactionTypes>(entity =>
+            modelBuilder.Entity<TransactionType>(entity =>
             {
                 entity.HasKey(e => e.TransactionTypeId)
                     .HasName("PK_Application_TransactionTypes");

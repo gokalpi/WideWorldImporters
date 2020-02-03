@@ -4,7 +4,7 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class PurchaseOrderLines
+    public partial class PurchaseOrderLine
     {
         public int PurchaseOrderLineId { get; set; }
         public int PurchaseOrderId { get; set; }
@@ -19,9 +19,9 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual PackageTypes PackageType { get; set; }
-        public virtual PurchaseOrders PurchaseOrder { get; set; }
-        public virtual StockItems StockItem { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual PackageType PackageType { get; set; }
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
+        public virtual StockItem StockItem { get; set; }
     }
 }

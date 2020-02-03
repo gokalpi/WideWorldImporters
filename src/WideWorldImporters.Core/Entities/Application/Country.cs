@@ -4,11 +4,11 @@ using System.Data.Entity.Spatial;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class Countries
+    public partial class Country
     {
-        public Countries()
+        public Country()
         {
-            StateProvinces = new HashSet<StateProvinces>();
+            StateProvinces = new HashSet<StateProvince>();
         }
 
         public int CountryId { get; set; }
@@ -26,7 +26,7 @@ namespace WideWorldImporters.Core.Entities.Application
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual ICollection<StateProvinces> StateProvinces { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual ICollection<StateProvince> StateProvinces { get; set; }
     }
 }

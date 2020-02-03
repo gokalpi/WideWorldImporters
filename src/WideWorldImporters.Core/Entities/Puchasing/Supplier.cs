@@ -6,14 +6,14 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class Suppliers
+    public partial class Supplier
     {
-        public Suppliers()
+        public Supplier()
         {
-            PurchaseOrders = new HashSet<PurchaseOrders>();
-            StockItemTransactions = new HashSet<StockItemTransactions>();
-            StockItems = new HashSet<StockItems>();
-            SupplierTransactions = new HashSet<SupplierTransactions>();
+            PurchaseOrders = new HashSet<PurchaseOrder>();
+            StockItemTransactions = new HashSet<StockItemTransaction>();
+            StockItems = new HashSet<StockItem>();
+            SupplierTransactions = new HashSet<SupplierTransaction>();
         }
 
         public int SupplierId { get; set; }
@@ -46,16 +46,16 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual People AlternateContactPerson { get; set; }
-        public virtual Cities DeliveryCity { get; set; }
-        public virtual DeliveryMethods DeliveryMethod { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual Cities PostalCity { get; set; }
-        public virtual People PrimaryContactPerson { get; set; }
-        public virtual SupplierCategories SupplierCategory { get; set; }
-        public virtual ICollection<PurchaseOrders> PurchaseOrders { get; set; }
-        public virtual ICollection<StockItemTransactions> StockItemTransactions { get; set; }
-        public virtual ICollection<StockItems> StockItems { get; set; }
-        public virtual ICollection<SupplierTransactions> SupplierTransactions { get; set; }
+        public virtual Person AlternateContactPerson { get; set; }
+        public virtual City DeliveryCity { get; set; }
+        public virtual DeliveryMethod DeliveryMethod { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual City PostalCity { get; set; }
+        public virtual Person PrimaryContactPerson { get; set; }
+        public virtual SupplierCategory SupplierCategory { get; set; }
+        public virtual ICollection<PurchaseOrder> PurchaseOrders { get; set; }
+        public virtual ICollection<StockItemTransaction> StockItemTransactions { get; set; }
+        public virtual ICollection<StockItem> StockItems { get; set; }
+        public virtual ICollection<SupplierTransaction> SupplierTransactions { get; set; }
     }
 }

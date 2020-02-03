@@ -3,7 +3,7 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItemStockGroups
+    public partial class StockItemStockGroup
     {
         public int StockItemStockGroupId { get; set; }
         public int StockItemId { get; set; }
@@ -11,8 +11,8 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual StockGroups StockGroup { get; set; }
-        public virtual StockItems StockItem { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual StockGroup StockGroup { get; set; }
+        public virtual StockItem StockItem { get; set; }
     }
 }

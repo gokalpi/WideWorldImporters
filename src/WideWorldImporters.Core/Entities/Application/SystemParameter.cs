@@ -3,7 +3,7 @@ using System.Data.Entity.Spatial;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class SystemParameters
+    public partial class SystemParameter
     {
         public int SystemParameterId { get; set; }
         public string DeliveryAddressLine1 { get; set; }
@@ -19,8 +19,8 @@ namespace WideWorldImporters.Core.Entities.Application
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual Cities DeliveryCity { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual Cities PostalCity { get; set; }
+        public virtual City DeliveryCity { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual City PostalCity { get; set; }
     }
 }

@@ -4,12 +4,12 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class BuyingGroups
+    public partial class BuyingGroup
     {
-        public BuyingGroups()
+        public BuyingGroup()
         {
-            Customers = new HashSet<Customers>();
-            SpecialDeals = new HashSet<SpecialDeals>();
+            Customers = new HashSet<Customer>();
+            SpecialDeals = new HashSet<SpecialDeal>();
         }
 
         public int BuyingGroupId { get; set; }
@@ -18,8 +18,8 @@ namespace WideWorldImporters.Core.Entities.Sales
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual ICollection<Customers> Customers { get; set; }
-        public virtual ICollection<SpecialDeals> SpecialDeals { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<SpecialDeal> SpecialDeals { get; set; }
     }
 }

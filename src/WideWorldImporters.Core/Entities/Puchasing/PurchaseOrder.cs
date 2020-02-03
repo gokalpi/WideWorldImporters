@@ -5,13 +5,13 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class PurchaseOrders
+    public partial class PurchaseOrder
     {
-        public PurchaseOrders()
+        public PurchaseOrder()
         {
-            PurchaseOrderLines = new HashSet<PurchaseOrderLines>();
-            StockItemTransactions = new HashSet<StockItemTransactions>();
-            SupplierTransactions = new HashSet<SupplierTransactions>();
+            PurchaseOrderLines = new HashSet<PurchaseOrderLine>();
+            StockItemTransactions = new HashSet<StockItemTransaction>();
+            SupplierTransactions = new HashSet<SupplierTransaction>();
         }
 
         public int PurchaseOrderId { get; set; }
@@ -27,12 +27,12 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual People ContactPerson { get; set; }
-        public virtual DeliveryMethods DeliveryMethod { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual Suppliers Supplier { get; set; }
-        public virtual ICollection<PurchaseOrderLines> PurchaseOrderLines { get; set; }
-        public virtual ICollection<StockItemTransactions> StockItemTransactions { get; set; }
-        public virtual ICollection<SupplierTransactions> SupplierTransactions { get; set; }
+        public virtual Person ContactPerson { get; set; }
+        public virtual DeliveryMethod DeliveryMethod { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual ICollection<PurchaseOrderLine> PurchaseOrderLines { get; set; }
+        public virtual ICollection<StockItemTransaction> StockItemTransactions { get; set; }
+        public virtual ICollection<SupplierTransaction> SupplierTransactions { get; set; }
     }
 }

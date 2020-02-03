@@ -4,7 +4,7 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class SpecialDeals
+    public partial class SpecialDeal
     {
         public int SpecialDealId { get; set; }
         public int? StockItemId { get; set; }
@@ -21,11 +21,11 @@ namespace WideWorldImporters.Core.Entities.Sales
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual BuyingGroups BuyingGroup { get; set; }
-        public virtual Customers Customer { get; set; }
-        public virtual CustomerCategories CustomerCategory { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual StockGroups StockGroup { get; set; }
-        public virtual StockItems StockItem { get; set; }
+        public virtual BuyingGroup BuyingGroup { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual CustomerCategory CustomerCategory { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual StockGroup StockGroup { get; set; }
+        public virtual StockItem StockItem { get; set; }
     }
 }

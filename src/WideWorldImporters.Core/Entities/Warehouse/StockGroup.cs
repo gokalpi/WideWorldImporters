@@ -5,12 +5,12 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockGroups
+    public partial class StockGroup
     {
-        public StockGroups()
+        public StockGroup()
         {
-            SpecialDeals = new HashSet<SpecialDeals>();
-            StockItemStockGroups = new HashSet<StockItemStockGroups>();
+            SpecialDeals = new HashSet<SpecialDeal>();
+            StockItemStockGroups = new HashSet<StockItemStockGroup>();
         }
 
         public int StockGroupId { get; set; }
@@ -19,8 +19,8 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual ICollection<SpecialDeals> SpecialDeals { get; set; }
-        public virtual ICollection<StockItemStockGroups> StockItemStockGroups { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual ICollection<SpecialDeal> SpecialDeals { get; set; }
+        public virtual ICollection<StockItemStockGroup> StockItemStockGroups { get; set; }
     }
 }

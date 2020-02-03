@@ -4,11 +4,11 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class SupplierCategories
+    public partial class SupplierCategory
     {
-        public SupplierCategories()
+        public SupplierCategory()
         {
-            Suppliers = new HashSet<Suppliers>();
+            Suppliers = new HashSet<Supplier>();
         }
 
         public int SupplierCategoryId { get; set; }
@@ -17,7 +17,7 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual ICollection<Suppliers> Suppliers { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }

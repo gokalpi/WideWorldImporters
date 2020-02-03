@@ -5,13 +5,13 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class Invoices
+    public partial class Invoice
     {
-        public Invoices()
+        public Invoice()
         {
-            CustomerTransactions = new HashSet<CustomerTransactions>();
-            InvoiceLines = new HashSet<InvoiceLines>();
-            StockItemTransactions = new HashSet<StockItemTransactions>();
+            CustomerTransactions = new HashSet<CustomerTransaction>();
+            InvoiceLines = new HashSet<InvoiceLine>();
+            StockItemTransactions = new HashSet<StockItemTransaction>();
         }
 
         public int InvoiceId { get; set; }
@@ -40,17 +40,17 @@ namespace WideWorldImporters.Core.Entities.Sales
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual People AccountsPerson { get; set; }
-        public virtual Customers BillToCustomer { get; set; }
-        public virtual People ContactPerson { get; set; }
-        public virtual Customers Customer { get; set; }
-        public virtual DeliveryMethods DeliveryMethod { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual Orders Order { get; set; }
-        public virtual People PackedByPerson { get; set; }
-        public virtual People SalespersonPerson { get; set; }
-        public virtual ICollection<CustomerTransactions> CustomerTransactions { get; set; }
-        public virtual ICollection<InvoiceLines> InvoiceLines { get; set; }
-        public virtual ICollection<StockItemTransactions> StockItemTransactions { get; set; }
+        public virtual Person AccountsPerson { get; set; }
+        public virtual Customer BillToCustomer { get; set; }
+        public virtual Person ContactPerson { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual DeliveryMethod DeliveryMethod { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Person PackedByPerson { get; set; }
+        public virtual Person SalespersonPerson { get; set; }
+        public virtual ICollection<CustomerTransaction> CustomerTransactions { get; set; }
+        public virtual ICollection<InvoiceLine> InvoiceLines { get; set; }
+        public virtual ICollection<StockItemTransaction> StockItemTransactions { get; set; }
     }
 }

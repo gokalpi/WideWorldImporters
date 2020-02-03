@@ -5,7 +5,7 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItemTransactions
+    public partial class StockItemTransaction
     {
         public int StockItemTransactionId { get; set; }
         public int StockItemId { get; set; }
@@ -19,12 +19,12 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual Customers Customer { get; set; }
-        public virtual Invoices Invoice { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual PurchaseOrders PurchaseOrder { get; set; }
-        public virtual StockItems StockItem { get; set; }
-        public virtual Suppliers Supplier { get; set; }
-        public virtual TransactionTypes TransactionType { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Invoice Invoice { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
+        public virtual StockItem StockItem { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual TransactionType TransactionType { get; set; }
     }
 }

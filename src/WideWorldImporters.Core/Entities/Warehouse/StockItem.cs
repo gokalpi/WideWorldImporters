@@ -6,16 +6,16 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItems
+    public partial class StockItem
     {
-        public StockItems()
+        public StockItem()
         {
-            InvoiceLines = new HashSet<InvoiceLines>();
-            OrderLines = new HashSet<OrderLines>();
-            PurchaseOrderLines = new HashSet<PurchaseOrderLines>();
-            SpecialDeals = new HashSet<SpecialDeals>();
-            StockItemStockGroups = new HashSet<StockItemStockGroups>();
-            StockItemTransactions = new HashSet<StockItemTransactions>();
+            InvoiceLines = new HashSet<InvoiceLine>();
+            OrderLines = new HashSet<OrderLine>();
+            PurchaseOrderLines = new HashSet<PurchaseOrderLine>();
+            SpecialDeals = new HashSet<SpecialDeal>();
+            StockItemStockGroups = new HashSet<StockItemStockGroup>();
+            StockItemTransactions = new HashSet<StockItemTransaction>();
         }
 
         public int StockItemId { get; set; }
@@ -44,17 +44,17 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual Colors Color { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual PackageTypes OuterPackage { get; set; }
-        public virtual Suppliers Supplier { get; set; }
-        public virtual PackageTypes UnitPackage { get; set; }
-        public virtual StockItemHoldings StockItemHoldings { get; set; }
-        public virtual ICollection<InvoiceLines> InvoiceLines { get; set; }
-        public virtual ICollection<OrderLines> OrderLines { get; set; }
-        public virtual ICollection<PurchaseOrderLines> PurchaseOrderLines { get; set; }
-        public virtual ICollection<SpecialDeals> SpecialDeals { get; set; }
-        public virtual ICollection<StockItemStockGroups> StockItemStockGroups { get; set; }
-        public virtual ICollection<StockItemTransactions> StockItemTransactions { get; set; }
+        public virtual Color Color { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual PackageType OuterPackage { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual PackageType UnitPackage { get; set; }
+        public virtual StockItemHolding StockItemHoldings { get; set; }
+        public virtual ICollection<InvoiceLine> InvoiceLines { get; set; }
+        public virtual ICollection<OrderLine> OrderLines { get; set; }
+        public virtual ICollection<PurchaseOrderLine> PurchaseOrderLines { get; set; }
+        public virtual ICollection<SpecialDeal> SpecialDeals { get; set; }
+        public virtual ICollection<StockItemStockGroup> StockItemStockGroups { get; set; }
+        public virtual ICollection<StockItemTransaction> StockItemTransactions { get; set; }
     }
 }

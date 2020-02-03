@@ -3,7 +3,7 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class CustomerTransactions
+    public partial class CustomerTransaction
     {
         public int CustomerTransactionId { get; set; }
         public int CustomerId { get; set; }
@@ -20,10 +20,10 @@ namespace WideWorldImporters.Core.Entities.Sales
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual Customers Customer { get; set; }
-        public virtual Invoices Invoice { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual PaymentMethods PaymentMethod { get; set; }
-        public virtual TransactionTypes TransactionType { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Invoice Invoice { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual PaymentMethod PaymentMethod { get; set; }
+        public virtual TransactionType TransactionType { get; set; }
     }
 }

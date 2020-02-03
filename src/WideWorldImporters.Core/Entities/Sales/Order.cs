@@ -4,13 +4,13 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class Orders
+    public partial class Order
     {
-        public Orders()
+        public Order()
         {
-            InverseBackorderOrder = new HashSet<Orders>();
-            Invoices = new HashSet<Invoices>();
-            OrderLines = new HashSet<OrderLines>();
+            InverseBackorderOrder = new HashSet<Order>();
+            Invoices = new HashSet<Invoice>();
+            OrderLines = new HashSet<OrderLine>();
         }
 
         public int OrderId { get; set; }
@@ -30,14 +30,14 @@ namespace WideWorldImporters.Core.Entities.Sales
         public int LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
-        public virtual Orders BackorderOrder { get; set; }
-        public virtual People ContactPerson { get; set; }
-        public virtual Customers Customer { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual People PickedByPerson { get; set; }
-        public virtual People SalespersonPerson { get; set; }
-        public virtual ICollection<Orders> InverseBackorderOrder { get; set; }
-        public virtual ICollection<Invoices> Invoices { get; set; }
-        public virtual ICollection<OrderLines> OrderLines { get; set; }
+        public virtual Order BackorderOrder { get; set; }
+        public virtual Person ContactPerson { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual Person PickedByPerson { get; set; }
+        public virtual Person SalespersonPerson { get; set; }
+        public virtual ICollection<Order> InverseBackorderOrder { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual ICollection<OrderLine> OrderLines { get; set; }
     }
 }

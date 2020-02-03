@@ -5,12 +5,12 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class PaymentMethods
+    public partial class PaymentMethod
     {
-        public PaymentMethods()
+        public PaymentMethod()
         {
-            CustomerTransactions = new HashSet<CustomerTransactions>();
-            SupplierTransactions = new HashSet<SupplierTransactions>();
+            CustomerTransactions = new HashSet<CustomerTransaction>();
+            SupplierTransactions = new HashSet<SupplierTransaction>();
         }
 
         public int PaymentMethodId { get; set; }
@@ -19,8 +19,8 @@ namespace WideWorldImporters.Core.Entities.Application
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual ICollection<CustomerTransactions> CustomerTransactions { get; set; }
-        public virtual ICollection<SupplierTransactions> SupplierTransactions { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual ICollection<CustomerTransaction> CustomerTransactions { get; set; }
+        public virtual ICollection<SupplierTransaction> SupplierTransactions { get; set; }
     }
 }

@@ -4,11 +4,11 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class Colors
+    public partial class Color
     {
-        public Colors()
+        public Color()
         {
-            StockItems = new HashSet<StockItems>();
+            StockItems = new HashSet<StockItem>();
         }
 
         public int ColorId { get; set; }
@@ -17,7 +17,7 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual ICollection<StockItems> StockItems { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual ICollection<StockItem> StockItems { get; set; }
     }
 }

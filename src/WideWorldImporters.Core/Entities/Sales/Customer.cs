@@ -6,17 +6,17 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class Customers
+    public partial class Customer
     {
-        public Customers()
+        public Customer()
         {
-            CustomerTransactions = new HashSet<CustomerTransactions>();
-            InverseBillToCustomer = new HashSet<Customers>();
-            InvoicesBillToCustomer = new HashSet<Invoices>();
-            InvoicesCustomer = new HashSet<Invoices>();
-            Orders = new HashSet<Orders>();
-            SpecialDeals = new HashSet<SpecialDeals>();
-            StockItemTransactions = new HashSet<StockItemTransactions>();
+            CustomerTransactions = new HashSet<CustomerTransaction>();
+            InverseBillToCustomer = new HashSet<Customer>();
+            InvoicesBillToCustomer = new HashSet<Invoice>();
+            InvoicesCustomer = new HashSet<Invoice>();
+            Orders = new HashSet<Order>();
+            SpecialDeals = new HashSet<SpecialDeal>();
+            StockItemTransactions = new HashSet<StockItemTransaction>();
         }
 
         public int CustomerId { get; set; }
@@ -51,21 +51,21 @@ namespace WideWorldImporters.Core.Entities.Sales
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 
-        public virtual People AlternateContactPerson { get; set; }
-        public virtual Customers BillToCustomer { get; set; }
-        public virtual BuyingGroups BuyingGroup { get; set; }
-        public virtual CustomerCategories CustomerCategory { get; set; }
-        public virtual Cities DeliveryCity { get; set; }
-        public virtual DeliveryMethods DeliveryMethod { get; set; }
-        public virtual People LastEditedByNavigation { get; set; }
-        public virtual Cities PostalCity { get; set; }
-        public virtual People PrimaryContactPerson { get; set; }
-        public virtual ICollection<CustomerTransactions> CustomerTransactions { get; set; }
-        public virtual ICollection<Customers> InverseBillToCustomer { get; set; }
-        public virtual ICollection<Invoices> InvoicesBillToCustomer { get; set; }
-        public virtual ICollection<Invoices> InvoicesCustomer { get; set; }
-        public virtual ICollection<Orders> Orders { get; set; }
-        public virtual ICollection<SpecialDeals> SpecialDeals { get; set; }
-        public virtual ICollection<StockItemTransactions> StockItemTransactions { get; set; }
+        public virtual Person AlternateContactPerson { get; set; }
+        public virtual Customer BillToCustomer { get; set; }
+        public virtual BuyingGroup BuyingGroup { get; set; }
+        public virtual CustomerCategory CustomerCategory { get; set; }
+        public virtual City DeliveryCity { get; set; }
+        public virtual DeliveryMethod DeliveryMethod { get; set; }
+        public virtual Person LastEditedByNavigation { get; set; }
+        public virtual City PostalCity { get; set; }
+        public virtual Person PrimaryContactPerson { get; set; }
+        public virtual ICollection<CustomerTransaction> CustomerTransactions { get; set; }
+        public virtual ICollection<Customer> InverseBillToCustomer { get; set; }
+        public virtual ICollection<Invoice> InvoicesBillToCustomer { get; set; }
+        public virtual ICollection<Invoice> InvoicesCustomer { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<SpecialDeal> SpecialDeals { get; set; }
+        public virtual ICollection<StockItemTransaction> StockItemTransactions { get; set; }
     }
 }
