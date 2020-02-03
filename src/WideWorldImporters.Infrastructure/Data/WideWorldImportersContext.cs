@@ -49,15 +49,6 @@ namespace WideWorldImporters.Infrastructure.Data
         public virtual DbSet<TransactionType> TransactionTypes { get; set; }
         public virtual DbSet<VehicleTemperatures> VehicleTemperatures { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=WideWorldImporters");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BuyingGroup>(entity =>
@@ -1867,10 +1858,6 @@ namespace WideWorldImporters.Infrastructure.Data
             modelBuilder.HasSequence<int>("TransactionID", "Sequences").StartsAt(336253);
 
             modelBuilder.HasSequence<int>("TransactionTypeID", "Sequences").StartsAt(14);
-
-            OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
