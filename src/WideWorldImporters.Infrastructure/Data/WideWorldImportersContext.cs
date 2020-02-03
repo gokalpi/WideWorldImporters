@@ -4,7 +4,7 @@ using WideWorldImporters.Core.Entities.Puchasing;
 using WideWorldImporters.Core.Entities.Sales;
 using WideWorldImporters.Core.Entities.Warehouse;
 
-namespace WideWorldImporters.Core.Data
+namespace WideWorldImporters.Infrastructure.Data
 {
     public partial class WideWorldImportersContext : DbContext
     {
