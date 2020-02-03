@@ -2,9 +2,8 @@
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class ColdRoomTemperature
+    public partial class ColdRoomTemperature : Entity<long>
     {
-        public long ColdRoomTemperatureId { get; set; }
         public int ColdRoomSensorNumber { get; set; }
         public DateTime RecordedWhen { get; set; }
         public decimal Temperature { get; set; }

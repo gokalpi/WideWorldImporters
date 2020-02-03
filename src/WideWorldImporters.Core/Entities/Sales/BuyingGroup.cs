@@ -4,7 +4,7 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class BuyingGroup
+    public partial class BuyingGroup : Entity
     {
         public BuyingGroup()
         {
@@ -12,7 +12,6 @@ namespace WideWorldImporters.Core.Entities.Sales
             SpecialDeals = new HashSet<SpecialDeal>();
         }
 
-        public int BuyingGroupId { get; set; }
         public string BuyingGroupName { get; set; }
         public int LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

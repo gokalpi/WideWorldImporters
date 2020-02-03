@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class City
+    public partial class City : Entity
     {
         public City()
         {
@@ -18,7 +18,6 @@ namespace WideWorldImporters.Core.Entities.Application
             SystemParametersPostalCity = new HashSet<SystemParameter>();
         }
 
-        public int CityId { get; set; }
         public string CityName { get; set; }
         public int StateProvinceId { get; set; }
         public DbGeography Location { get; set; }

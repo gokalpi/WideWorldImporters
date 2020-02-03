@@ -5,7 +5,7 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class DeliveryMethod
+    public partial class DeliveryMethod : Entity
     {
         public DeliveryMethod()
         {
@@ -15,7 +15,6 @@ namespace WideWorldImporters.Core.Entities.Application
             Suppliers = new HashSet<Supplier>();
         }
 
-        public int DeliveryMethodId { get; set; }
         public string DeliveryMethodName { get; set; }
         public int LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

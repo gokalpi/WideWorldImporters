@@ -5,7 +5,7 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockGroup
+    public partial class StockGroup : Entity
     {
         public StockGroup()
         {
@@ -13,7 +13,6 @@ namespace WideWorldImporters.Core.Entities.Warehouse
             StockItemStockGroups = new HashSet<StockItemStockGroup>();
         }
 
-        public int StockGroupId { get; set; }
         public string StockGroupName { get; set; }
         public int LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

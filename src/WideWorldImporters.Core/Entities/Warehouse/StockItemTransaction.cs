@@ -5,9 +5,8 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItemTransaction
+    public partial class StockItemTransaction : Entity
     {
-        public int StockItemTransactionId { get; set; }
         public int StockItemId { get; set; }
         public int TransactionTypeId { get; set; }
         public int? CustomerId { get; set; }

@@ -4,7 +4,7 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class CustomerCategory
+    public partial class CustomerCategory : Entity
     {
         public CustomerCategory()
         {
@@ -12,7 +12,6 @@ namespace WideWorldImporters.Core.Entities.Sales
             SpecialDeals = new HashSet<SpecialDeal>();
         }
 
-        public int CustomerCategoryId { get; set; }
         public string CustomerCategoryName { get; set; }
         public int LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

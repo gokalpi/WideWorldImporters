@@ -4,9 +4,8 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class SpecialDeal
+    public partial class SpecialDeal : Entity
     {
-        public int SpecialDealId { get; set; }
         public int? StockItemId { get; set; }
         public int? CustomerId { get; set; }
         public int? BuyingGroupId { get; set; }

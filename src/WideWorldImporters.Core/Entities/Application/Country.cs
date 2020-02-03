@@ -4,14 +4,13 @@ using System.Data.Entity.Spatial;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class Country
+    public partial class Country : Entity
     {
         public Country()
         {
             StateProvinces = new HashSet<StateProvince>();
         }
 
-        public int CountryId { get; set; }
         public string CountryName { get; set; }
         public string FormalName { get; set; }
         public string IsoAlpha3Code { get; set; }

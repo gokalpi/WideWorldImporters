@@ -4,7 +4,7 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class Order
+    public partial class Order : Entity
     {
         public Order()
         {
@@ -13,7 +13,6 @@ namespace WideWorldImporters.Core.Entities.Sales
             OrderLines = new HashSet<OrderLine>();
         }
 
-        public int OrderId { get; set; }
         public int CustomerId { get; set; }
         public int SalespersonPersonId { get; set; }
         public int? PickedByPersonId { get; set; }

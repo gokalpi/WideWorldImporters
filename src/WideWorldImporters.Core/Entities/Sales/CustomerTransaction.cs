@@ -3,9 +3,8 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class CustomerTransaction
+    public partial class CustomerTransaction : Entity
     {
-        public int CustomerTransactionId { get; set; }
         public int CustomerId { get; set; }
         public int TransactionTypeId { get; set; }
         public int? InvoiceId { get; set; }

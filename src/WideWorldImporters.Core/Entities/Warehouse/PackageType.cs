@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class PackageType
+    public partial class PackageType : Entity
     {
         public PackageType()
         {
@@ -17,7 +17,6 @@ namespace WideWorldImporters.Core.Entities.Warehouse
             StockItemsUnitPackage = new HashSet<StockItem>();
         }
 
-        public int PackageTypeId { get; set; }
         public string PackageTypeName { get; set; }
         public int LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

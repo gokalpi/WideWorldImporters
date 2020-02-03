@@ -3,9 +3,8 @@ using System.Data.Entity.Spatial;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class SystemParameter
+    public partial class SystemParameter : Entity
     {
-        public int SystemParameterId { get; set; }
         public string DeliveryAddressLine1 { get; set; }
         public string DeliveryAddressLine2 { get; set; }
         public int DeliveryCityId { get; set; }

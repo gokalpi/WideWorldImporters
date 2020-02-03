@@ -5,7 +5,7 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class PurchaseOrder
+    public partial class PurchaseOrder : Entity
     {
         public PurchaseOrder()
         {
@@ -14,7 +14,6 @@ namespace WideWorldImporters.Core.Entities.Puchasing
             SupplierTransactions = new HashSet<SupplierTransaction>();
         }
 
-        public int PurchaseOrderId { get; set; }
         public int SupplierId { get; set; }
         public DateTime OrderDate { get; set; }
         public int DeliveryMethodId { get; set; }

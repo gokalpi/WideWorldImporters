@@ -5,7 +5,7 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class PaymentMethod
+    public partial class PaymentMethod : Entity
     {
         public PaymentMethod()
         {
@@ -13,7 +13,6 @@ namespace WideWorldImporters.Core.Entities.Application
             SupplierTransactions = new HashSet<SupplierTransaction>();
         }
 
-        public int PaymentMethodId { get; set; }
         public string PaymentMethodName { get; set; }
         public int LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

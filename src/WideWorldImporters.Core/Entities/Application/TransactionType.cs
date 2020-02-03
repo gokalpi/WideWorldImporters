@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class TransactionType
+    public partial class TransactionType : Entity
     {
         public TransactionType()
         {
@@ -15,7 +15,6 @@ namespace WideWorldImporters.Core.Entities.Application
             SupplierTransactions = new HashSet<SupplierTransaction>();
         }
 
-        public int TransactionTypeId { get; set; }
         public string TransactionTypeName { get; set; }
         public int LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

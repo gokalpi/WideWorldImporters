@@ -4,9 +4,8 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class PurchaseOrderLine
+    public partial class PurchaseOrderLine : Entity
     {
-        public int PurchaseOrderLineId { get; set; }
         public int PurchaseOrderId { get; set; }
         public int StockItemId { get; set; }
         public int OrderedOuters { get; set; }

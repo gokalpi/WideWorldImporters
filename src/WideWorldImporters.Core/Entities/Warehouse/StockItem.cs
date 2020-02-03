@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Entities.Sales;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItem
+    public partial class StockItem : Entity
     {
         public StockItem()
         {
@@ -18,7 +18,6 @@ namespace WideWorldImporters.Core.Entities.Warehouse
             StockItemTransactions = new HashSet<StockItemTransaction>();
         }
 
-        public int StockItemId { get; set; }
         public string StockItemName { get; set; }
         public int SupplierId { get; set; }
         public int? ColorId { get; set; }

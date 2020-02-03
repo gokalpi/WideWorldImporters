@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class Person
+    public partial class Person : Entity
     {
         public Person()
         {
@@ -53,7 +53,6 @@ namespace WideWorldImporters.Core.Entities.Application
             TransactionTypes = new HashSet<TransactionType>();
         }
 
-        public int PersonId { get; set; }
         public string FullName { get; set; }
         public string PreferredName { get; set; }
         public string SearchName { get; set; }

@@ -3,9 +3,8 @@ using WideWorldImporters.Core.Entities.Application;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class SupplierTransaction
+    public partial class SupplierTransaction : Entity
     {
-        public int SupplierTransactionId { get; set; }
         public int SupplierId { get; set; }
         public int TransactionTypeId { get; set; }
         public int? PurchaseOrderId { get; set; }

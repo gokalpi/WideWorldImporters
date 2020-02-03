@@ -2,9 +2,8 @@
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class VehicleTemperatures
+    public partial class VehicleTemperature : Entity<long>
     {
-        public long VehicleTemperatureId { get; set; }
         public string VehicleRegistration { get; set; }
         public int ChillerSensorNumber { get; set; }
         public DateTime RecordedWhen { get; set; }
