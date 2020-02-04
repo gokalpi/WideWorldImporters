@@ -8,10 +8,6 @@ namespace WideWorldImporters.Infrastructure.Data
 {
     public partial class WideWorldImportersContext : DbContext
     {
-        public WideWorldImportersContext()
-        {
-        }
-
         public WideWorldImportersContext(DbContextOptions<WideWorldImportersContext> options)
             : base(options)
         {
@@ -47,13 +43,13 @@ namespace WideWorldImporters.Infrastructure.Data
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<SystemParameter> SystemParameters { get; set; }
         public virtual DbSet<TransactionType> TransactionTypes { get; set; }
-        public virtual DbSet<VehicleTemperatures> VehicleTemperatures { get; set; }
+        public virtual DbSet<VehicleTemperature> VehicleTemperatures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BuyingGroup>(entity =>
             {
-                entity.HasKey(e => e.BuyingGroupId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_BuyingGroups");
 
                 entity.ToTable("BuyingGroups", "Sales");
@@ -62,7 +58,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Sales_BuyingGroups_BuyingGroupName")
                     .IsUnique();
 
-                entity.Property(e => e.BuyingGroupId)
+                entity.Property(e => e.Id)
                     .HasColumnName("BuyingGroupID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[BuyingGroupID])");
 
@@ -79,7 +75,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<City>(entity =>
             {
-                entity.HasKey(e => e.CityId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Application_Cities");
 
                 entity.ToTable("Cities", "Application");
@@ -87,7 +83,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.StateProvinceId)
                     .HasName("FK_Application_Cities_StateProvinceID");
 
-                entity.Property(e => e.CityId)
+                entity.Property(e => e.Id)
                     .HasColumnName("CityID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CityID])");
 
@@ -112,7 +108,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<ColdRoomTemperature>(entity =>
             {
-                entity.HasKey(e => e.ColdRoomTemperatureId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Warehouse_ColdRoomTemperatures");
 
                 entity.ToTable("ColdRoomTemperatures", "Warehouse");
@@ -120,14 +116,14 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.ColdRoomSensorNumber)
                     .HasName("IX_Warehouse_ColdRoomTemperatures_ColdRoomSensorNumber");
 
-                entity.Property(e => e.ColdRoomTemperatureId).HasColumnName("ColdRoomTemperatureID");
+                entity.Property(e => e.Id).HasColumnName("ColdRoomTemperatureID");
 
                 entity.Property(e => e.Temperature).HasColumnType("decimal(10, 2)");
             });
 
             modelBuilder.Entity<Color>(entity =>
             {
-                entity.HasKey(e => e.ColorId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Warehouse_Colors");
 
                 entity.ToTable("Colors", "Warehouse");
@@ -136,7 +132,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Warehouse_Colors_ColorName")
                     .IsUnique();
 
-                entity.Property(e => e.ColorId)
+                entity.Property(e => e.Id)
                     .HasColumnName("ColorID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[ColorID])");
 
@@ -153,7 +149,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<Country>(entity =>
             {
-                entity.HasKey(e => e.CountryId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Application_Countries");
 
                 entity.ToTable("Countries", "Application");
@@ -166,7 +162,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Application_Countries_FormalName")
                     .IsUnique();
 
-                entity.Property(e => e.CountryId)
+                entity.Property(e => e.Id)
                     .HasColumnName("CountryID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CountryID])");
 
@@ -203,7 +199,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<CustomerCategory>(entity =>
             {
-                entity.HasKey(e => e.CustomerCategoryId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_CustomerCategories");
 
                 entity.ToTable("CustomerCategories", "Sales");
@@ -212,7 +208,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Sales_CustomerCategories_CustomerCategoryName")
                     .IsUnique();
 
-                entity.Property(e => e.CustomerCategoryId)
+                entity.Property(e => e.Id)
                     .HasColumnName("CustomerCategoryID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CustomerCategoryID])");
 
@@ -229,7 +225,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<CustomerTransaction>(entity =>
             {
-                entity.HasKey(e => e.CustomerTransactionId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_CustomerTransactions");
 
                 entity.ToTable("CustomerTransactions", "Sales");
@@ -249,7 +245,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.TransactionTypeId)
                     .HasName("FK_Sales_CustomerTransactions_TransactionTypeID");
 
-                entity.Property(e => e.CustomerTransactionId)
+                entity.Property(e => e.Id)
                     .HasColumnName("CustomerTransactionID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])");
 
@@ -308,7 +304,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.HasKey(e => e.CustomerId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_Customers");
 
                 entity.ToTable("Customers", "Sales");
@@ -338,10 +334,10 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.PrimaryContactPersonId)
                     .HasName("FK_Sales_Customers_PrimaryContactPersonID");
 
-                entity.HasIndex(e => new { e.PrimaryContactPersonId, e.IsOnCreditHold, e.CustomerId, e.BillToCustomerId })
+                entity.HasIndex(e => new { e.PrimaryContactPersonId, e.IsOnCreditHold, e.Id, e.BillToCustomerId })
                     .HasName("IX_Sales_Customers_Perf_20160301_06");
 
-                entity.Property(e => e.CustomerId)
+                entity.Property(e => e.Id)
                     .HasColumnName("CustomerID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CustomerID])");
 
@@ -463,7 +459,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<DeliveryMethod>(entity =>
             {
-                entity.HasKey(e => e.DeliveryMethodId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Application_DeliveryMethods");
 
                 entity.ToTable("DeliveryMethods", "Application");
@@ -472,7 +468,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Application_DeliveryMethods_DeliveryMethodName")
                     .IsUnique();
 
-                entity.Property(e => e.DeliveryMethodId)
+                entity.Property(e => e.Id)
                     .HasColumnName("DeliveryMethodID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[DeliveryMethodID])");
 
@@ -489,7 +485,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<InvoiceLine>(entity =>
             {
-                entity.HasKey(e => e.InvoiceLineId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_InvoiceLines");
 
                 entity.ToTable("InvoiceLines", "Sales");
@@ -503,7 +499,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.StockItemId)
                     .HasName("FK_Sales_InvoiceLines_StockItemID");
 
-                entity.Property(e => e.InvoiceLineId)
+                entity.Property(e => e.Id)
                     .HasColumnName("InvoiceLineID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[InvoiceLineID])");
 
@@ -556,7 +552,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<Invoice>(entity =>
             {
-                entity.HasKey(e => e.InvoiceId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_Invoices");
 
                 entity.ToTable("Invoices", "Sales");
@@ -588,7 +584,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => new { e.ConfirmedReceivedBy, e.ConfirmedDeliveryTime })
                     .HasName("IX_Sales_Invoices_ConfirmedDeliveryTime");
 
-                entity.Property(e => e.InvoiceId)
+                entity.Property(e => e.Id)
                     .HasColumnName("InvoiceID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[InvoiceID])");
 
@@ -680,7 +676,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<OrderLine>(entity =>
             {
-                entity.HasKey(e => e.OrderLineId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_OrderLines");
 
                 entity.ToTable("OrderLines", "Sales");
@@ -697,10 +693,10 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => new { e.OrderId, e.PickedQuantity, e.StockItemId, e.PickingCompletedWhen })
                     .HasName("IX_Sales_OrderLines_Perf_20160301_02");
 
-                entity.HasIndex(e => new { e.Quantity, e.StockItemId, e.PickingCompletedWhen, e.OrderId, e.OrderLineId })
+                entity.HasIndex(e => new { e.Quantity, e.StockItemId, e.PickingCompletedWhen, e.OrderId, e.Id })
                     .HasName("IX_Sales_OrderLines_Perf_20160301_01");
 
-                entity.Property(e => e.OrderLineId)
+                entity.Property(e => e.Id)
                     .HasColumnName("OrderLineID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[OrderLineID])");
 
@@ -747,7 +743,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.HasKey(e => e.OrderId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_Orders");
 
                 entity.ToTable("Orders", "Sales");
@@ -764,7 +760,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.SalespersonPersonId)
                     .HasName("FK_Sales_Orders_SalespersonPersonID");
 
-                entity.Property(e => e.OrderId)
+                entity.Property(e => e.Id)
                     .HasColumnName("OrderID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[OrderID])");
 
@@ -823,7 +819,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<PackageType>(entity =>
             {
-                entity.HasKey(e => e.PackageTypeId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Warehouse_PackageTypes");
 
                 entity.ToTable("PackageTypes", "Warehouse");
@@ -832,7 +828,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Warehouse_PackageTypes_PackageTypeName")
                     .IsUnique();
 
-                entity.Property(e => e.PackageTypeId)
+                entity.Property(e => e.Id)
                     .HasColumnName("PackageTypeID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PackageTypeID])");
 
@@ -849,7 +845,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<PaymentMethod>(entity =>
             {
-                entity.HasKey(e => e.PaymentMethodId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Application_PaymentMethods");
 
                 entity.ToTable("PaymentMethods", "Application");
@@ -858,7 +854,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Application_PaymentMethods_PaymentMethodName")
                     .IsUnique();
 
-                entity.Property(e => e.PaymentMethodId)
+                entity.Property(e => e.Id)
                     .HasColumnName("PaymentMethodID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PaymentMethodID])");
 
@@ -875,7 +871,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<Person>(entity =>
             {
-                entity.HasKey(e => e.PersonId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Application_People");
 
                 entity.ToTable("People", "Application");
@@ -889,10 +885,10 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.IsSalesperson)
                     .HasName("IX_Application_People_IsSalesperson");
 
-                entity.HasIndex(e => new { e.FullName, e.EmailAddress, e.IsPermittedToLogon, e.PersonId })
+                entity.HasIndex(e => new { e.FullName, e.EmailAddress, e.IsPermittedToLogon, e.Id })
                     .HasName("IX_Application_People_Perf_20160301_05");
 
-                entity.Property(e => e.PersonId)
+                entity.Property(e => e.Id)
                     .HasColumnName("PersonID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PersonID])");
 
@@ -928,7 +924,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<PurchaseOrderLine>(entity =>
             {
-                entity.HasKey(e => e.PurchaseOrderLineId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Purchasing_PurchaseOrderLines");
 
                 entity.ToTable("PurchaseOrderLines", "Purchasing");
@@ -945,7 +941,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => new { e.OrderedOuters, e.ReceivedOuters, e.IsOrderLineFinalized, e.StockItemId })
                     .HasName("IX_Purchasing_PurchaseOrderLines_Perf_20160301_4");
 
-                entity.Property(e => e.PurchaseOrderLineId)
+                entity.Property(e => e.Id)
                     .HasColumnName("PurchaseOrderLineID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PurchaseOrderLineID])");
 
@@ -992,7 +988,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<PurchaseOrder>(entity =>
             {
-                entity.HasKey(e => e.PurchaseOrderId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Purchasing_PurchaseOrders");
 
                 entity.ToTable("PurchaseOrders", "Purchasing");
@@ -1006,7 +1002,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.SupplierId)
                     .HasName("FK_Purchasing_PurchaseOrders_SupplierID");
 
-                entity.Property(e => e.PurchaseOrderId)
+                entity.Property(e => e.Id)
                     .HasColumnName("PurchaseOrderID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PurchaseOrderID])");
 
@@ -1051,7 +1047,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<SpecialDeal>(entity =>
             {
-                entity.HasKey(e => e.SpecialDealId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Sales_SpecialDeals");
 
                 entity.ToTable("SpecialDeals", "Sales");
@@ -1071,7 +1067,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.StockItemId)
                     .HasName("FK_Sales_SpecialDeals_StockItemID");
 
-                entity.Property(e => e.SpecialDealId)
+                entity.Property(e => e.Id)
                     .HasColumnName("SpecialDealID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SpecialDealID])");
 
@@ -1135,7 +1131,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<StateProvince>(entity =>
             {
-                entity.HasKey(e => e.StateProvinceId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Application_StateProvinces");
 
                 entity.ToTable("StateProvinces", "Application");
@@ -1150,7 +1146,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Application_StateProvinces_StateProvinceName")
                     .IsUnique();
 
-                entity.Property(e => e.StateProvinceId)
+                entity.Property(e => e.Id)
                     .HasColumnName("StateProvinceID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StateProvinceID])");
 
@@ -1183,7 +1179,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<StockGroup>(entity =>
             {
-                entity.HasKey(e => e.StockGroupId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Warehouse_StockGroups");
 
                 entity.ToTable("StockGroups", "Warehouse");
@@ -1192,7 +1188,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Warehouse_StockGroups_StockGroupName")
                     .IsUnique();
 
-                entity.Property(e => e.StockGroupId)
+                entity.Property(e => e.Id)
                     .HasColumnName("StockGroupID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockGroupID])");
 
@@ -1241,7 +1237,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<StockItemStockGroup>(entity =>
             {
-                entity.HasKey(e => e.StockItemStockGroupId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Warehouse_StockItemStockGroups");
 
                 entity.ToTable("StockItemStockGroups", "Warehouse");
@@ -1254,7 +1250,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_StockItemStockGroups_StockItemID_Lookup")
                     .IsUnique();
 
-                entity.Property(e => e.StockItemStockGroupId)
+                entity.Property(e => e.Id)
                     .HasColumnName("StockItemStockGroupID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockItemStockGroupID])");
 
@@ -1285,7 +1281,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<StockItemTransaction>(entity =>
             {
-                entity.HasKey(e => e.StockItemTransactionId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Warehouse_StockItemTransactions");
 
                 entity.ToTable("StockItemTransactions", "Warehouse");
@@ -1308,7 +1304,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.TransactionTypeId)
                     .HasName("FK_Warehouse_StockItemTransactions_TransactionTypeID");
 
-                entity.Property(e => e.StockItemTransactionId)
+                entity.Property(e => e.Id)
                     .HasColumnName("StockItemTransactionID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])");
 
@@ -1369,7 +1365,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<StockItem>(entity =>
             {
-                entity.HasKey(e => e.StockItemId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Warehouse_StockItems");
 
                 entity.ToTable("StockItems", "Warehouse");
@@ -1390,7 +1386,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.UnitPackageId)
                     .HasName("FK_Warehouse_StockItems_UnitPackageID");
 
-                entity.Property(e => e.StockItemId)
+                entity.Property(e => e.Id)
                     .HasColumnName("StockItemID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockItemID])");
 
@@ -1458,7 +1454,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<SupplierCategory>(entity =>
             {
-                entity.HasKey(e => e.SupplierCategoryId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Purchasing_SupplierCategories");
 
                 entity.ToTable("SupplierCategories", "Purchasing");
@@ -1467,7 +1463,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Purchasing_SupplierCategories_SupplierCategoryName")
                     .IsUnique();
 
-                entity.Property(e => e.SupplierCategoryId)
+                entity.Property(e => e.Id)
                     .HasColumnName("SupplierCategoryID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SupplierCategoryID])");
 
@@ -1484,7 +1480,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<SupplierTransaction>(entity =>
             {
-                entity.HasKey(e => e.SupplierTransactionId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Purchasing_SupplierTransactions");
 
                 entity.ToTable("SupplierTransactions", "Purchasing");
@@ -1504,7 +1500,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.TransactionTypeId)
                     .HasName("FK_Purchasing_SupplierTransactions_TransactionTypeID");
 
-                entity.Property(e => e.SupplierTransactionId)
+                entity.Property(e => e.Id)
                     .HasColumnName("SupplierTransactionID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])");
 
@@ -1565,7 +1561,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<Supplier>(entity =>
             {
-                entity.HasKey(e => e.SupplierId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Purchasing_Suppliers");
 
                 entity.ToTable("Suppliers", "Purchasing");
@@ -1592,7 +1588,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Purchasing_Suppliers_SupplierName")
                     .IsUnique();
 
-                entity.Property(e => e.SupplierId)
+                entity.Property(e => e.Id)
                     .HasColumnName("SupplierID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SupplierID])");
 
@@ -1701,7 +1697,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<SystemParameter>(entity =>
             {
-                entity.HasKey(e => e.SystemParameterId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Application_SystemParameters");
 
                 entity.ToTable("SystemParameters", "Application");
@@ -1712,7 +1708,7 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.PostalCityId)
                     .HasName("FK_Application_SystemParameters_PostalCityID");
 
-                entity.Property(e => e.SystemParameterId)
+                entity.Property(e => e.Id)
                     .HasColumnName("SystemParameterID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SystemParameterID])");
 
@@ -1765,7 +1761,7 @@ namespace WideWorldImporters.Infrastructure.Data
 
             modelBuilder.Entity<TransactionType>(entity =>
             {
-                entity.HasKey(e => e.TransactionTypeId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Application_TransactionTypes");
 
                 entity.ToTable("TransactionTypes", "Application");
@@ -1774,7 +1770,7 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasName("UQ_Application_TransactionTypes_TransactionTypeName")
                     .IsUnique();
 
-                entity.Property(e => e.TransactionTypeId)
+                entity.Property(e => e.Id)
                     .HasColumnName("TransactionTypeID")
                     .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionTypeID])");
 
@@ -1789,14 +1785,14 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasConstraintName("FK_Application_TransactionTypes_Application_People");
             });
 
-            modelBuilder.Entity<VehicleTemperatures>(entity =>
+            modelBuilder.Entity<VehicleTemperature>(entity =>
             {
-                entity.HasKey(e => e.VehicleTemperatureId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_Warehouse_VehicleTemperatures");
 
                 entity.ToTable("VehicleTemperatures", "Warehouse");
 
-                entity.Property(e => e.VehicleTemperatureId).HasColumnName("VehicleTemperatureID");
+                entity.Property(e => e.Id).HasColumnName("VehicleTemperatureID");
 
                 entity.Property(e => e.FullSensorData).HasMaxLength(1000);
 
