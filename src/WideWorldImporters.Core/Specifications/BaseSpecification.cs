@@ -9,7 +9,7 @@ namespace WideWorldImporters.Core.Specifications
     {
         protected BaseSpecification(Expression<Func<T, bool>> criteria)
         {
-            Criteria = criteria;
+            Criteria = criteria ?? throw new ArgumentNullException(nameof(criteria));
         }
 
         public Expression<Func<T, bool>> Criteria { get; }
