@@ -93,6 +93,9 @@ namespace WideWorldImporters.Infrastructure.Data
 
                 entity.Property(e => e.StateProvinceId).HasColumnName("StateProvinceID");
 
+                //entity.Property(e => e.Location)
+                //    .HasColumnType("geography");
+
                 entity.HasOne(d => d.LastEditedByNavigation)
                     .WithMany(p => p.Cities)
                     .HasForeignKey(d => d.LastEditedBy)
@@ -116,7 +119,9 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.HasIndex(e => e.ColdRoomSensorNumber)
                     .HasName("IX_Warehouse_ColdRoomTemperatures_ColdRoomSensorNumber");
 
-                entity.Property(e => e.Id).HasColumnName("ColdRoomTemperatureID");
+                entity.Property(e => e.Id)
+                    .HasColumnName("ColdRoomTemperatureID")
+                    .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[ColdRoomTemperatureID])");
 
                 entity.Property(e => e.Temperature).HasColumnType("decimal(10, 2)");
             });
@@ -190,9 +195,13 @@ namespace WideWorldImporters.Infrastructure.Data
                     .IsRequired()
                     .HasMaxLength(30);
 
+                //entity.Property(e => e.Border)
+                //    .HasColumnType("geography");
+
                 entity.HasOne(d => d.LastEditedByNavigation)
                     .WithMany(p => p.Countries)
                     .HasForeignKey(d => d.LastEditedBy)
+                    .IsRequired(false)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Application_Countries_Application_People");
             });
@@ -370,6 +379,9 @@ namespace WideWorldImporters.Infrastructure.Data
                 entity.Property(e => e.DeliveryPostalCode)
                     .IsRequired()
                     .HasMaxLength(10);
+
+                //entity.Property(e => e.DeliveryLocation)
+                //    .HasColumnType("geography");
 
                 entity.Property(e => e.DeliveryRun).HasMaxLength(5);
 
@@ -1156,6 +1168,9 @@ namespace WideWorldImporters.Infrastructure.Data
                     .IsRequired()
                     .HasMaxLength(50);
 
+                //entity.Property(e => e.Border)
+                //    .HasColumnType("geography");
+
                 entity.Property(e => e.StateProvinceCode)
                     .IsRequired()
                     .HasMaxLength(5);
@@ -1618,6 +1633,9 @@ namespace WideWorldImporters.Infrastructure.Data
                     .IsRequired()
                     .HasMaxLength(10);
 
+                //entity.Property(e => e.DeliveryLocation)
+                //    .HasColumnType("geography");
+
                 entity.Property(e => e.FaxNumber)
                     .IsRequired()
                     .HasMaxLength(20);
@@ -1726,6 +1744,9 @@ namespace WideWorldImporters.Infrastructure.Data
                     .IsRequired()
                     .HasMaxLength(10);
 
+                //entity.Property(e => e.DeliveryLocation)
+                //    .HasColumnType("geography");
+
                 entity.Property(e => e.LastEditedWhen).HasDefaultValueSql("(sysdatetime())");
 
                 entity.Property(e => e.PostalAddressLine1)
@@ -1792,7 +1813,9 @@ namespace WideWorldImporters.Infrastructure.Data
 
                 entity.ToTable("VehicleTemperatures", "Warehouse");
 
-                entity.Property(e => e.Id).HasColumnName("VehicleTemperatureID");
+                entity.Property(e => e.Id)
+                    .HasColumnName("VehicleTemperatureID")
+                    .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[VehicleTemperatureID])");
 
                 entity.Property(e => e.FullSensorData).HasMaxLength(1000);
 
@@ -1803,57 +1826,61 @@ namespace WideWorldImporters.Infrastructure.Data
                     .HasMaxLength(20);
             });
 
-            modelBuilder.HasSequence<int>("BuyingGroupID", "Sequences").StartsAt(3);
+            modelBuilder.HasSequence<int>("BuyingGroupID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("CityID", "Sequences").StartsAt(38187);
+            modelBuilder.HasSequence<int>("CityID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("ColorID", "Sequences").StartsAt(37);
+            modelBuilder.HasSequence<long>("ColdRoomTemperatureID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("CountryID", "Sequences").StartsAt(242);
+            modelBuilder.HasSequence<int>("ColorID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("CustomerCategoryID", "Sequences").StartsAt(9);
+            modelBuilder.HasSequence<int>("CountryID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("CustomerID", "Sequences").StartsAt(1062);
+            modelBuilder.HasSequence<int>("CustomerCategoryID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("DeliveryMethodID", "Sequences").StartsAt(11);
+            modelBuilder.HasSequence<int>("CustomerID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("InvoiceID", "Sequences").StartsAt(70511);
+            modelBuilder.HasSequence<int>("DeliveryMethodID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("InvoiceLineID", "Sequences").StartsAt(228266);
+            modelBuilder.HasSequence<int>("InvoiceID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("OrderID", "Sequences").StartsAt(73596);
+            modelBuilder.HasSequence<int>("InvoiceLineID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("OrderLineID", "Sequences").StartsAt(231413);
+            modelBuilder.HasSequence<int>("OrderID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("PackageTypeID", "Sequences").StartsAt(15);
+            modelBuilder.HasSequence<int>("OrderLineID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("PaymentMethodID", "Sequences").StartsAt(5);
+            modelBuilder.HasSequence<int>("PackageTypeID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("PersonID", "Sequences").StartsAt(3262);
+            modelBuilder.HasSequence<int>("PaymentMethodID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("PurchaseOrderID", "Sequences").StartsAt(2075);
+            modelBuilder.HasSequence<int>("PersonID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("PurchaseOrderLineID", "Sequences").StartsAt(8368);
+            modelBuilder.HasSequence<int>("PurchaseOrderID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("SpecialDealID", "Sequences").StartsAt(3);
+            modelBuilder.HasSequence<int>("PurchaseOrderLineID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("StateProvinceID", "Sequences").StartsAt(54);
+            modelBuilder.HasSequence<int>("SpecialDealID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("StockGroupID", "Sequences").StartsAt(11);
+            modelBuilder.HasSequence<int>("StateProvinceID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("StockItemID", "Sequences").StartsAt(228);
+            modelBuilder.HasSequence<int>("StockGroupID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("StockItemStockGroupID", "Sequences").StartsAt(443);
+            modelBuilder.HasSequence<int>("StockItemID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("SupplierCategoryID", "Sequences").StartsAt(10);
+            modelBuilder.HasSequence<int>("StockItemStockGroupID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("SupplierID", "Sequences").StartsAt(14);
+            modelBuilder.HasSequence<int>("SupplierCategoryID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("SystemParameterID", "Sequences").StartsAt(2);
+            modelBuilder.HasSequence<int>("SupplierID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("TransactionID", "Sequences").StartsAt(336253);
+            modelBuilder.HasSequence<int>("SystemParameterID", "Sequences").StartsAt(1);
 
-            modelBuilder.HasSequence<int>("TransactionTypeID", "Sequences").StartsAt(14);
+            modelBuilder.HasSequence<int>("TransactionID", "Sequences").StartsAt(1);
+
+            modelBuilder.HasSequence<int>("TransactionTypeID", "Sequences").StartsAt(1);
+
+            modelBuilder.HasSequence<long>("VehicleTemperatureID", "Sequences").StartsAt(1);
         }
     }
 }
