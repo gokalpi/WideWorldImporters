@@ -13,7 +13,7 @@ namespace WideWorldImporters.Core.Entities.Sales
         }
 
         public string BuyingGroupName { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 

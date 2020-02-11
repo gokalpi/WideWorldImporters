@@ -26,7 +26,7 @@ namespace WideWorldImporters.Core.Entities.Sales
         public string DeliveryInstructions { get; set; }
         public string InternalComments { get; set; }
         public DateTime? PickingCompletedWhen { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Order BackorderOrder { get; set; }

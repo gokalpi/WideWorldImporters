@@ -20,8 +20,8 @@ namespace WideWorldImporters.Core.Entities.Application
         public string Continent { get; set; }
         public string Region { get; set; }
         public string Subregion { get; set; }
-        public DbGeography Border { get; set; }
-        public int LastEditedBy { get; set; }
+        //public DbGeography Border { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 

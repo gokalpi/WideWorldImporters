@@ -16,7 +16,7 @@ namespace WideWorldImporters.Core.Entities.Sales
         public decimal TaxAmount { get; set; }
         public decimal LineProfit { get; set; }
         public decimal ExtendedPrice { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Invoice Invoice { get; set; }

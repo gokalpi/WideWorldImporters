@@ -42,11 +42,11 @@ namespace WideWorldImporters.Core.Entities.Sales
         public string DeliveryAddressLine1 { get; set; }
         public string DeliveryAddressLine2 { get; set; }
         public string DeliveryPostalCode { get; set; }
-        public DbGeography DeliveryLocation { get; set; }
+        //public DbGeography DeliveryLocation { get; set; }
         public string PostalAddressLine1 { get; set; }
         public string PostalAddressLine2 { get; set; }
         public string PostalPostalCode { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 

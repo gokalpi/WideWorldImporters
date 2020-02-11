@@ -12,7 +12,7 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         public decimal LastCostPrice { get; set; }
         public int ReorderLevel { get; set; }
         public int TargetStockLevel { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Person LastEditedByNavigation { get; set; }

@@ -17,7 +17,7 @@ namespace WideWorldImporters.Core.Entities.Sales
         public decimal? DiscountAmount { get; set; }
         public decimal? DiscountPercentage { get; set; }
         public decimal? UnitPrice { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual BuyingGroup BuyingGroup { get; set; }

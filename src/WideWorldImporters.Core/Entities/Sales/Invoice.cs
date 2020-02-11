@@ -36,7 +36,7 @@ namespace WideWorldImporters.Core.Entities.Sales
         public string ReturnedDeliveryData { get; set; }
         public DateTime? ConfirmedDeliveryTime { get; set; }
         public string ConfirmedReceivedBy { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Person AccountsPerson { get; set; }

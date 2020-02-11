@@ -15,7 +15,7 @@ namespace WideWorldImporters.Core.Entities.Sales
         public decimal TaxRate { get; set; }
         public int PickedQuantity { get; set; }
         public DateTime? PickingCompletedWhen { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Person LastEditedByNavigation { get; set; }

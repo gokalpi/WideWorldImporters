@@ -15,7 +15,7 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         public int? PurchaseOrderId { get; set; }
         public DateTime TransactionOccurredWhen { get; set; }
         public decimal Quantity { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Customer Customer { get; set; }

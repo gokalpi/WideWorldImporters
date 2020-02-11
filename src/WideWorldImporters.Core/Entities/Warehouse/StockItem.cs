@@ -39,7 +39,7 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         public string CustomFields { get; set; }
         public string Tags { get; set; }
         public string SearchDetails { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 

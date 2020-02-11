@@ -23,7 +23,7 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public bool IsOrderFinalized { get; set; }
         public string Comments { get; set; }
         public string InternalComments { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Person ContactPerson { get; set; }

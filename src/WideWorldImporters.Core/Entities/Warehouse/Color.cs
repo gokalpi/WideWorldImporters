@@ -12,7 +12,7 @@ namespace WideWorldImporters.Core.Entities.Warehouse
         }
 
         public string ColorName { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 

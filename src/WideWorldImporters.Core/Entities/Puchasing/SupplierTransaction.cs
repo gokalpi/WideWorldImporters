@@ -17,7 +17,7 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public decimal OutstandingBalance { get; set; }
         public DateTime? FinalizationDate { get; set; }
         public bool? IsFinalized { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Person LastEditedByNavigation { get; set; }

@@ -70,7 +70,7 @@ namespace WideWorldImporters.Core.Entities.Application
         public byte[] Photo { get; set; }
         public string CustomFields { get; set; }
         public string OtherLanguages { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 

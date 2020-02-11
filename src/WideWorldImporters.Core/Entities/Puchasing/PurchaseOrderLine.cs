@@ -15,7 +15,7 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public decimal? ExpectedUnitPricePerOuter { get; set; }
         public DateTime? LastReceiptDate { get; set; }
         public bool IsOrderLineFinalized { get; set; }
-        public int LastEditedBy { get; set; }
+        public int? LastEditedBy { get; set; }
         public DateTime LastEditedWhen { get; set; }
 
         public virtual Person LastEditedByNavigation { get; set; }
