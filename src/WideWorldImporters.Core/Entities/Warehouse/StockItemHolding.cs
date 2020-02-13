@@ -1,9 +1,10 @@
 ﻿using System;
 using WideWorldImporters.Core.Entities.Application;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItemHolding
+    public partial class StockItemHolding: IAuditableEntity
     {
         public int StockItemId { get; set; }
         public int QuantityOnHand { get; set; }

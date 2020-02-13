@@ -1,9 +1,10 @@
 ﻿using System;
 using WideWorldImporters.Core.Entities.Application;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class SupplierTransaction : Entity
+    public partial class SupplierTransaction : Entity, IAuditableEntity
     {
         public int SupplierId { get; set; }
         public int TransactionTypeId { get; set; }

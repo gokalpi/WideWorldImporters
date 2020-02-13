@@ -1,10 +1,11 @@
 ﻿using System;
 using WideWorldImporters.Core.Entities.Application;
 using WideWorldImporters.Core.Entities.Warehouse;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class SpecialDeal : Entity
+    public partial class SpecialDeal : Entity, IAuditableEntity
     {
         public int? StockItemId { get; set; }
         public int? CustomerId { get; set; }

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Application;
 using WideWorldImporters.Core.Entities.Sales;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockGroup : Entity
+    public partial class StockGroup : Entity, IAuditableEntity
     {
         public StockGroup()
         {

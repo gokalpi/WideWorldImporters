@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Application;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class SupplierCategory : Entity
+    public partial class SupplierCategory : Entity, IAuditableEntity
     {
         public SupplierCategory()
         {

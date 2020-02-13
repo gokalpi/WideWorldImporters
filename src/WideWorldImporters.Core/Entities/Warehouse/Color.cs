@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Application;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class Color : Entity
+    public partial class Color : Entity, IAuditableEntity
     {
         public Color()
         {

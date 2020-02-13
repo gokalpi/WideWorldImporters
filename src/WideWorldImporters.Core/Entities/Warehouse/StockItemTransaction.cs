@@ -2,10 +2,11 @@
 using WideWorldImporters.Core.Entities.Application;
 using WideWorldImporters.Core.Entities.Puchasing;
 using WideWorldImporters.Core.Entities.Sales;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItemTransaction : Entity
+    public partial class StockItemTransaction : Entity, IAuditableEntity
     {
         public int StockItemId { get; set; }
         public int TransactionTypeId { get; set; }

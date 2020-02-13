@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Puchasing;
 using WideWorldImporters.Core.Entities.Sales;
 using WideWorldImporters.Core.Entities.Warehouse;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class Person : Entity
+    public partial class Person : Entity, IAuditableEntity
     {
         public Person()
         {

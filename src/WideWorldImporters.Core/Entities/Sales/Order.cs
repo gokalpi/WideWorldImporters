@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Application;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class Order : Entity
+    public partial class Order : Entity, IAuditableEntity
     {
         public Order()
         {

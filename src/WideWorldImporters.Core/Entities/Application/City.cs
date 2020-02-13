@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Spatial;
 using WideWorldImporters.Core.Entities.Puchasing;
 using WideWorldImporters.Core.Entities.Sales;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class City : Entity
+    public partial class City : Entity, IAuditableEntity
     {
         public City()
         {
@@ -20,8 +20,10 @@ namespace WideWorldImporters.Core.Entities.Application
 
         public string CityName { get; set; }
         public int StateProvinceId { get; set; }
+
         //public DbGeography Location { get; set; }
         public long? LatestRecordedPopulation { get; set; }
+
         public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }

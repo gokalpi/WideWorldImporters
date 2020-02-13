@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Puchasing;
 using WideWorldImporters.Core.Entities.Sales;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class DeliveryMethod : Entity
+    public partial class DeliveryMethod : Entity, IAuditableEntity
     {
         public DeliveryMethod()
         {

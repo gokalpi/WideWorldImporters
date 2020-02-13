@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Spatial;
 using WideWorldImporters.Core.Entities.Application;
 using WideWorldImporters.Core.Entities.Warehouse;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class Supplier : Entity
+    public partial class Supplier : Entity, IAuditableEntity
     {
         public Supplier()
         {
@@ -37,8 +37,10 @@ namespace WideWorldImporters.Core.Entities.Puchasing
         public string DeliveryAddressLine1 { get; set; }
         public string DeliveryAddressLine2 { get; set; }
         public string DeliveryPostalCode { get; set; }
+
         //public DbGeography DeliveryLocation { get; set; }
         public string PostalAddressLine1 { get; set; }
+
         public string PostalAddressLine2 { get; set; }
         public string PostalPostalCode { get; set; }
         public int? LastEditedBy { get; set; }

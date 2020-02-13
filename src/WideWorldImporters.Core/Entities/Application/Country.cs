@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Spatial;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class Country : Entity
+    public partial class Country : Entity, IAuditableEntity
     {
         public Country()
         {
@@ -20,8 +20,10 @@ namespace WideWorldImporters.Core.Entities.Application
         public string Continent { get; set; }
         public string Region { get; set; }
         public string Subregion { get; set; }
+
         //public DbGeography Border { get; set; }
         public int? LastEditedBy { get; set; }
+
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
 

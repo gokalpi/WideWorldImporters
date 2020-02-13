@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Application;
 using WideWorldImporters.Core.Entities.Warehouse;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class Invoice : Entity
+    public partial class Invoice : Entity, IAuditableEntity
     {
         public Invoice()
         {

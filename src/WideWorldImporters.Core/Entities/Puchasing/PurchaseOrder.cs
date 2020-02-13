@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Application;
 using WideWorldImporters.Core.Entities.Warehouse;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class PurchaseOrder : Entity
+    public partial class PurchaseOrder : Entity, IAuditableEntity
     {
         public PurchaseOrder()
         {

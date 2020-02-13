@@ -1,10 +1,11 @@
 ﻿using System;
 using WideWorldImporters.Core.Entities.Application;
 using WideWorldImporters.Core.Entities.Warehouse;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class OrderLine : Entity
+    public partial class OrderLine : Entity, IAuditableEntity
     {
         public int OrderId { get; set; }
         public int StockItemId { get; set; }

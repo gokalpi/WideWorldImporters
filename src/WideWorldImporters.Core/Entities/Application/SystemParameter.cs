@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Data.Entity.Spatial;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class SystemParameter : Entity
+    public partial class SystemParameter : Entity, IAuditableEntity
     {
         public string DeliveryAddressLine1 { get; set; }
         public string DeliveryAddressLine2 { get; set; }
         public int DeliveryCityId { get; set; }
         public string DeliveryPostalCode { get; set; }
+
         //public DbGeography DeliveryLocation { get; set; }
         public string PostalAddressLine1 { get; set; }
+
         public string PostalAddressLine2 { get; set; }
         public int PostalCityId { get; set; }
         public string PostalPostalCode { get; set; }

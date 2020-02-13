@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using WideWorldImporters.Core.Entities.Puchasing;
 using WideWorldImporters.Core.Entities.Sales;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class PaymentMethod : Entity
+    public partial class PaymentMethod : Entity, IAuditableEntity
     {
         public PaymentMethod()
         {
