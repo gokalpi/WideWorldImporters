@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using WideWorldImporters.Core.Entities;
 
 namespace WideWorldImporters.Core.Interfaces
 {
-    public interface IRepository<T> : IRepository<T, int> where T : Entity
+    public interface IRepository<T> : IRepository<T, int> where T : class, IEntity<int>
     {
     }
 
-    public interface IRepository<T, TId> where T : Entity<TId>
+    public interface IRepository<T, TKey> where T : class, IEntity<TKey>
     {
         Task<IReadOnlyList<T>> GetAllAsync();
 
@@ -29,7 +28,7 @@ namespace WideWorldImporters.Core.Interfaces
 
         Task<IReadOnlyList<T>> GetAsync(ISpecification<T> spec);
 
-        Task<T> GetByIdAsync(TId id);
+        Task<T> GetByIdAsync(TKey id);
 
         Task<int> CountAsync(ISpecification<T> spec);
 
@@ -51,7 +50,7 @@ namespace WideWorldImporters.Core.Interfaces
 
         int Count(ISpecification<T> spec);
 
-        T GetById(TId id);
+        T GetById(TKey id);
 
         Task AddAsync(T entity);
 

@@ -5,11 +5,11 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Infrastructure.Data.Repositories
 {
-    public class SpecificationEvaluator<T> : SpecificationEvaluator<T, int> where T : Entity
+    public class SpecificationEvaluator<T> : SpecificationEvaluator<T, int> where T : class, IEntity
     {
     }
 
-    public class SpecificationEvaluator<T, TId> where T : Entity<TId>
+    public class SpecificationEvaluator<T, TId> where T : class, IEntity<TId>
     {
         public static IQueryable<T> GetQuery(IQueryable<T> inputQuery, ISpecification<T> specification)
         {

@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using WideWorldImporters.Core.Entities;
 using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Infrastructure.Data.Repositories
 {
-    public class Repository<T> : Repository<T, int> where T : Entity
+    public class Repository<T> : Repository<T, int>, IRepository<T> where T : class, IEntity
     {
         public Repository(WideWorldImportersContext dbContext) : base(dbContext)
         {
         }
     }
 
-    public class Repository<T, TId> : IRepository<T, TId> where T : Entity<TId>
+    public class Repository<T, TKey> : IRepository<T, TKey> where T : class, IEntity<TKey>
     {
         protected readonly WideWorldImportersContext _dbContext;
         private readonly DbSet<T> _dbSet;
@@ -88,9 +87,9 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
             if (predicate != null) query = query.Where(predicate);
 
             if (orderBy != null)
-                return  orderBy(query).ToList();
+                return orderBy(query).ToList();
 
-            return  query.ToList();
+            return query.ToList();
         }
 
         public virtual IReadOnlyList<T> Get(ISpecification<T> spec)
@@ -152,12 +151,12 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
             return await ApplySpecification(spec).ToListAsync();
         }
 
-        public virtual T GetById(TId id)
+        public virtual T GetById(TKey id)
         {
             return _dbSet.Find(id);
         }
 
-        public virtual async Task<T> GetByIdAsync(TId id)
+        public virtual async Task<T> GetByIdAsync(TKey id)
         {
             return await _dbSet.FindAsync(id);
         }
@@ -171,7 +170,7 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
 
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {
-            return SpecificationEvaluator<T, TId>.GetQuery(_dbSet.AsQueryable(), spec);
+            return SpecificationEvaluator<T, TKey>.GetQuery(_dbSet.AsQueryable(), spec);
         }
     }
 }
