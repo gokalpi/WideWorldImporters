@@ -1,12 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 
 namespace WideWorldImporters.Application.Responses
 {
-    public class PagedResponse<T> : IPagedResponse<T>
+    public class PagedResponse<T> : ListResponse<T>, IPagedResponse<T>
     {
-        public bool IsSuccessful { get; set; }
-        public string Message { get; set; }
-        public IEnumerable<T> Model { get; set; }
+        public PagedResponse()
+        {
+        }
+
+        public PagedResponse(IEnumerable<T> model) : base(model)
+        {
+        }
+
+        public PagedResponse(ILogger logger, string actionName, Exception ex) : base(logger, actionName, ex)
+        {
+        }
+
+        public PagedResponse(ILogger logger, string actionName, string message) : base(logger, actionName, message)
+        {
+        }
 
         public int PageSize { get; set; }
 

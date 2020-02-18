@@ -1,18 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 
 namespace WideWorldImporters.Application.Responses
 {
-    public class ListResponse<T> : IListResponse<T>
+    public class ListResponse<T> : Response, IListResponse<T>
     {
         public ListResponse()
         {
-        }
-
-        public ListResponse(string message)
-        {
-            IsSuccessful = false;
-            Message = message;
-            Model = default;
         }
 
         public ListResponse(IEnumerable<T> model)
@@ -22,8 +17,14 @@ namespace WideWorldImporters.Application.Responses
             Model = model;
         }
 
-        public bool IsSuccessful { get; set; }
-        public string Message { get; set; }
+        public ListResponse(ILogger logger, string actionName, Exception ex) : base(logger, actionName, ex)
+        {
+        }
+
+        public ListResponse(ILogger logger, string actionName, string message) : base(logger, actionName, message)
+        {
+        }
+
         public IEnumerable<T> Model { get; set; }
     }
 }

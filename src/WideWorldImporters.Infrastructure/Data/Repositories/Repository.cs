@@ -8,14 +8,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Infrastructure.Data.Repositories
 {
-    public class Repository<T> : Repository<T, int>, IRepository<T> where T : class, IEntity
-    {
-        public Repository(WideWorldImportersContext dbContext) : base(dbContext)
-        {
-        }
-    }
-
-    public class Repository<T, TKey> : IRepository<T, TKey> where T : class, IEntity<TKey>
+    public class Repository<T> : IRepository<T> where T : class, IEntity
     {
         protected readonly WideWorldImportersContext _dbContext;
         private readonly DbSet<T> _dbSet;
@@ -36,14 +29,14 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
             await _dbSet.AddAsync(entity);
         }
 
-        public virtual int Count(ISpecification<T> spec)
+        public virtual int Count(Expression<Func<T, bool>> predicate = null)
         {
-            return ApplySpecification(spec).Count();
+            return _dbSet.Count(predicate);
         }
 
-        public virtual async Task<int> CountAsync(ISpecification<T> spec)
+        public virtual async Task<int> CountAsync(Expression<Func<T, bool>> predicate = null)
         {
-            return await ApplySpecification(spec).CountAsync();
+            return await _dbSet.CountAsync(predicate);
         }
 
         public virtual void Delete(T entity)
@@ -51,33 +44,45 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
             _dbSet.Remove(entity);
         }
 
-        public virtual IReadOnlyList<T> Get(Expression<Func<T, bool>> predicate)
-        {
-            return _dbSet.Where(predicate).ToList();
-        }
-
         public virtual IReadOnlyList<T> Get(Expression<Func<T, bool>> predicate = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            string includeString = null,
-            bool disableTracking = true)
+                                            Expression<Func<T, object>> groupBy = null,
+                                            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                                            string includeString = null,
+                                            bool disableTracking = true,
+                                            int? page = null,
+                                            int? pageSize = null)
         {
             IQueryable<T> query = _dbSet;
             if (disableTracking) query = query.AsNoTracking();
 
-            if (!string.IsNullOrWhiteSpace(includeString)) query = query.Include(includeString);
+            if (!string.IsNullOrWhiteSpace(includeString))
+                query = query.Include(includeString);
 
-            if (predicate != null) query = query.Where(predicate);
+            if (predicate != null)
+                query = query.Where(predicate);
 
             if (orderBy != null)
                 return orderBy(query).ToList();
+
+            if (groupBy != null)
+                query = query.GroupBy(groupBy).SelectMany(x => x);
+
+            if (page.HasValue && pageSize.HasValue)
+            {
+                query = query.Skip(page.Value * pageSize.Value)
+                             .Take(pageSize.Value);
+            }
 
             return query.ToList();
         }
 
         public virtual IReadOnlyList<T> Get(Expression<Func<T, bool>> predicate = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            List<Expression<Func<T, object>>> includes = null,
-            bool disableTracking = true)
+                                            Expression<Func<T, object>> groupBy = null,
+                                            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                                            List<Expression<Func<T, object>>> includes = null,
+                                            bool disableTracking = true,
+                                            int? page = null,
+                                            int? pageSize = null)
         {
             IQueryable<T> query = _dbSet;
             if (disableTracking) query = query.AsNoTracking();
@@ -89,33 +94,51 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
             if (orderBy != null)
                 return orderBy(query).ToList();
 
+            if (groupBy != null)
+                query = query.GroupBy(groupBy).SelectMany(x => x);
+
+            if (page.HasValue && pageSize.HasValue)
+            {
+                query = query.Skip(page.Value * pageSize.Value)
+                             .Take(pageSize.Value);
+            }
+
             return query.ToList();
         }
 
-        public virtual IReadOnlyList<T> Get(ISpecification<T> spec)
+        public virtual IReadOnlyList<T> GetAll(int? page = null, int? pageSize = null)
         {
-            return ApplySpecification(spec).ToList();
+            IQueryable<T> query = _dbSet;
+
+            if (page.HasValue && pageSize.HasValue)
+            {
+                query = query.Skip(page.Value * pageSize.Value)
+                             .Take(pageSize.Value);
+            }
+
+            return query.ToList();
         }
 
-        public virtual IReadOnlyList<T> GetAll()
+        public virtual async Task<IReadOnlyList<T>> GetAllAsync(int? page = null, int? pageSize = null)
         {
-            return _dbSet.ToList();
-        }
+            IQueryable<T> query = _dbSet;
 
-        public virtual async Task<IReadOnlyList<T>> GetAllAsync()
-        {
-            return await _dbSet.ToListAsync();
-        }
+            if (page.HasValue && pageSize.HasValue)
+            {
+                query = query.Skip(page.Value * pageSize.Value)
+                             .Take(pageSize.Value);
+            }
 
-        public virtual async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate)
-        {
-            return await _dbSet.Where(predicate).ToListAsync();
+            return await query.ToListAsync();
         }
 
         public virtual async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            string includeString = null,
-            bool disableTracking = true)
+                                                             Expression<Func<T, object>> groupBy = null,
+                                                             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                                                             string includeString = null,
+                                                             bool disableTracking = true,
+                                                             int? page = null,
+                                                             int? pageSize = null)
         {
             IQueryable<T> query = _dbSet;
             if (disableTracking) query = query.AsNoTracking();
@@ -126,13 +149,26 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
 
             if (orderBy != null)
                 return await orderBy(query).ToListAsync();
+
+            if (groupBy != null)
+                query = query.GroupBy(groupBy).SelectMany(x => x);
+
+            if (page.HasValue && pageSize.HasValue)
+            {
+                query = query.Skip(page.Value * pageSize.Value)
+                             .Take(pageSize.Value);
+            }
+
             return await query.ToListAsync();
         }
 
         public virtual async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            List<Expression<Func<T, object>>> includes = null,
-            bool disableTracking = true)
+                                                             Expression<Func<T, object>> groupBy = null,
+                                                             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                                                             List<Expression<Func<T, object>>> includes = null,
+                                                             bool disableTracking = true,
+                                                             int? page = null,
+                                                             int? pageSize = null)
         {
             IQueryable<T> query = _dbSet;
             if (disableTracking) query = query.AsNoTracking();
@@ -143,20 +179,25 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
 
             if (orderBy != null)
                 return await orderBy(query).ToListAsync();
+
+            if (groupBy != null)
+                query = query.GroupBy(groupBy).SelectMany(x => x);
+
+            if (page.HasValue && pageSize.HasValue)
+            {
+                query = query.Skip(page.Value * pageSize.Value)
+                             .Take(pageSize.Value);
+            }
+
             return await query.ToListAsync();
         }
 
-        public virtual async Task<IReadOnlyList<T>> GetAsync(ISpecification<T> spec)
-        {
-            return await ApplySpecification(spec).ToListAsync();
-        }
-
-        public virtual T GetById(TKey id)
+        public virtual T GetById(object id)
         {
             return _dbSet.Find(id);
         }
 
-        public virtual async Task<T> GetByIdAsync(TKey id)
+        public virtual async Task<T> GetByIdAsync(object id)
         {
             return await _dbSet.FindAsync(id);
         }
@@ -166,11 +207,6 @@ namespace WideWorldImporters.Infrastructure.Data.Repositories
             _dbSet
                 .Attach(entity)
                 .State = EntityState.Modified;
-        }
-
-        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
-        {
-            return SpecificationEvaluator<T, TKey>.GetQuery(_dbSet.AsQueryable(), spec);
         }
     }
 }

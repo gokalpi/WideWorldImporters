@@ -1,6 +1,6 @@
 ﻿namespace WideWorldImporters.Core.Interfaces
 {
-    public interface IAuditableEntity
+    public interface IAuditableEntity : IEntity
     {
         public int? LastEditedBy { get; set; }
     }

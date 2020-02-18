@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Entities.Warehouse;
 
 namespace WideWorldImporters.Infrastructure.Data
 {
-    public partial class WideWorldImportersContext : DbContext
+    public class WideWorldImportersContext : DbContext
     {
         public WideWorldImportersContext(DbContextOptions<WideWorldImportersContext> options)
             : base(options)

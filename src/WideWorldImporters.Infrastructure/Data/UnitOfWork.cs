@@ -28,16 +28,6 @@ namespace WideWorldImporters.Infrastructure.Data
             return repository;
         }
 
-        public IRepository<T, TKey> Repository<T, TKey>() where T : class, IEntity<TKey>
-        {
-            IRepository<T, TKey> repository;
-            if (!_repositories.ContainsKey(typeof(T)))
-                _repositories.Add(typeof(T), repository = new Repository<T, TKey>(_context));
-            else
-                repository = _repositories[typeof(T)] as Repository<T, TKey>;
-            return repository;
-        }
-
         public virtual int SaveChanges()
         {
             return _context.SaveChanges();
