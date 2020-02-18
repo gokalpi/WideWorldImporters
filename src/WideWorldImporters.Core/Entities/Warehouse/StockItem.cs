@@ -7,7 +7,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItem : Entity, IAuditableEntity
+    public class StockItem : IAuditableEntity
     {
         public StockItem()
         {
@@ -19,6 +19,7 @@ namespace WideWorldImporters.Core.Entities.Warehouse
             StockItemTransactions = new HashSet<StockItemTransaction>();
         }
 
+        public int Id { get; set; }
         public string StockItemName { get; set; }
         public int SupplierId { get; set; }
         public int? ColorId { get; set; }

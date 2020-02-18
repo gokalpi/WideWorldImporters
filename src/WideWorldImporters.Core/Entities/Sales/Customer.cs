@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class Customer : Entity, IAuditableEntity
+    public class Customer : IAuditableEntity
     {
         public Customer()
         {
@@ -19,6 +19,7 @@ namespace WideWorldImporters.Core.Entities.Sales
             StockItemTransactions = new HashSet<StockItemTransaction>();
         }
 
+        public int Id { get; set; }
         public string CustomerName { get; set; }
         public int BillToCustomerId { get; set; }
         public int CustomerCategoryId { get; set; }

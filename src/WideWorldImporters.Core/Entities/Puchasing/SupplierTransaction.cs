@@ -4,8 +4,9 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class SupplierTransaction : Entity, IAuditableEntity
+    public class SupplierTransaction : IAuditableEntity
     {
+        public int Id { get; set; }
         public int SupplierId { get; set; }
         public int TransactionTypeId { get; set; }
         public int? PurchaseOrderId { get; set; }

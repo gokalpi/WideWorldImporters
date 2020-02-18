@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class City : Entity, IAuditableEntity
+    public class City : IAuditableEntity
     {
         public City()
         {
@@ -18,6 +18,7 @@ namespace WideWorldImporters.Core.Entities.Application
             SystemParametersPostalCity = new HashSet<SystemParameter>();
         }
 
+        public int Id { get; set; }
         public string CityName { get; set; }
         public int StateProvinceId { get; set; }
 

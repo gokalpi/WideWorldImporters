@@ -4,7 +4,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItemHolding: IAuditableEntity
+    public class StockItemHolding : IEntity
     {
         public int StockItemId { get; set; }
         public int QuantityOnHand { get; set; }

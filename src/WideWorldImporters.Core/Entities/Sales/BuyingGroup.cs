@@ -5,7 +5,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class BuyingGroup : Entity, IAuditableEntity
+    public class BuyingGroup : IAuditableEntity
     {
         public BuyingGroup()
         {
@@ -13,6 +13,7 @@ namespace WideWorldImporters.Core.Entities.Sales
             SpecialDeals = new HashSet<SpecialDeal>();
         }
 
+        public int Id { get; set; }
         public string BuyingGroupName { get; set; }
         public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

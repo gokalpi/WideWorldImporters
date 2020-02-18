@@ -4,13 +4,14 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class StateProvince : Entity, IAuditableEntity
+    public class StateProvince : IAuditableEntity
     {
         public StateProvince()
         {
             Cities = new HashSet<City>();
         }
 
+        public int Id { get; set; }
         public string StateProvinceCode { get; set; }
         public string StateProvinceName { get; set; }
         public int CountryId { get; set; }

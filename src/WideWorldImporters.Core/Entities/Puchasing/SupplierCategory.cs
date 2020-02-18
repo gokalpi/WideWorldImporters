@@ -5,13 +5,14 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class SupplierCategory : Entity, IAuditableEntity
+    public class SupplierCategory : IAuditableEntity
     {
         public SupplierCategory()
         {
             Suppliers = new HashSet<Supplier>();
         }
 
+        public int Id { get; set; }
         public string SupplierCategoryName { get; set; }
         public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

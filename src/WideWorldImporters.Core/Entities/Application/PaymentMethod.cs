@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class PaymentMethod : Entity, IAuditableEntity
+    public class PaymentMethod : IAuditableEntity
     {
         public PaymentMethod()
         {
@@ -14,6 +14,7 @@ namespace WideWorldImporters.Core.Entities.Application
             SupplierTransactions = new HashSet<SupplierTransaction>();
         }
 
+        public int Id { get; set; }
         public string PaymentMethodName { get; set; }
         public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

@@ -4,8 +4,9 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class CustomerTransaction : Entity, IAuditableEntity
+    public class CustomerTransaction : IAuditableEntity
     {
+        public int Id { get; set; }
         public int CustomerId { get; set; }
         public int TransactionTypeId { get; set; }
         public int? InvoiceId { get; set; }

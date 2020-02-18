@@ -6,8 +6,9 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class StockItemTransaction : Entity, IAuditableEntity
+    public class StockItemTransaction : IAuditableEntity
     {
+        public int Id { get; set; }
         public int StockItemId { get; set; }
         public int TransactionTypeId { get; set; }
         public int? CustomerId { get; set; }

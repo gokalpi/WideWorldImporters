@@ -5,8 +5,9 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class OrderLine : Entity, IAuditableEntity
+    public class OrderLine : IAuditableEntity
     {
+        public int Id { get; set; }
         public int OrderId { get; set; }
         public int StockItemId { get; set; }
         public string Description { get; set; }

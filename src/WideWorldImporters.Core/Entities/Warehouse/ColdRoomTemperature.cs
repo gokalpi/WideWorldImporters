@@ -1,9 +1,11 @@
 ﻿using System;
+using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Warehouse
 {
-    public partial class ColdRoomTemperature : Entity<long>
+    public class ColdRoomTemperature : IEntity
     {
+        public long Id { get; set; }
         public int ColdRoomSensorNumber { get; set; }
         public DateTime RecordedWhen { get; set; }
         public decimal Temperature { get; set; }

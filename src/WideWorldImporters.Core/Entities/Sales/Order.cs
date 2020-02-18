@@ -5,7 +5,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Sales
 {
-    public partial class Order : Entity, IAuditableEntity
+    public class Order : IAuditableEntity
     {
         public Order()
         {
@@ -14,6 +14,7 @@ namespace WideWorldImporters.Core.Entities.Sales
             OrderLines = new HashSet<OrderLine>();
         }
 
+        public int Id { get; set; }
         public int CustomerId { get; set; }
         public int SalespersonPersonId { get; set; }
         public int? PickedByPersonId { get; set; }

@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class DeliveryMethod : Entity, IAuditableEntity
+    public class DeliveryMethod : IAuditableEntity
     {
         public DeliveryMethod()
         {
@@ -16,6 +16,7 @@ namespace WideWorldImporters.Core.Entities.Application
             Suppliers = new HashSet<Supplier>();
         }
 
+        public int Id { get; set; }
         public string DeliveryMethodName { get; set; }
         public int? LastEditedBy { get; set; }
         public DateTime ValidFrom { get; set; }

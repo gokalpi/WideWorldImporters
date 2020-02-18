@@ -7,7 +7,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Application
 {
-    public partial class Person : Entity, IAuditableEntity
+    public class Person : IAuditableEntity
     {
         public Person()
         {
@@ -54,6 +54,7 @@ namespace WideWorldImporters.Core.Entities.Application
             TransactionTypes = new HashSet<TransactionType>();
         }
 
+        public int Id { get; set; }
         public string FullName { get; set; }
         public string PreferredName { get; set; }
         public string SearchName { get; set; }

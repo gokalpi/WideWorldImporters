@@ -6,7 +6,7 @@ using WideWorldImporters.Core.Interfaces;
 
 namespace WideWorldImporters.Core.Entities.Puchasing
 {
-    public partial class Supplier : Entity, IAuditableEntity
+    public class Supplier : IAuditableEntity
     {
         public Supplier()
         {
@@ -16,6 +16,7 @@ namespace WideWorldImporters.Core.Entities.Puchasing
             SupplierTransactions = new HashSet<SupplierTransaction>();
         }
 
+        public int Id { get; set; }
         public string SupplierName { get; set; }
         public int SupplierCategoryId { get; set; }
         public int PrimaryContactPersonId { get; set; }
